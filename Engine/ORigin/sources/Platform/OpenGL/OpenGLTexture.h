@@ -8,7 +8,7 @@
 
 namespace origin {
 
-	class OpenGLTexture2D final : public Texture2D
+	class OGN_API OpenGLTexture2D final : public Texture2D
 	{
 	private:
 		TextureSpecification m_Spec;
@@ -59,7 +59,7 @@ namespace origin {
 		const std::string &GetMaterialTypeName() const override { return m_MaterialTypeName; }
 	};
 
-	class OpenGLTextureCube : public TextureCube
+	class OGN_API OpenGLTextureCube : public TextureCube
 	{
 	private:
 		TextureSpecification m_Spec;

@@ -8,14 +8,14 @@
 
 namespace origin
 {
-    struct ConsoleMessage
+    struct OGN_API ConsoleMessage
     {
         std::string Message;
         std::string Timestamp;
         LogLevel Level = LogLevel::Info;
     };
 
-    class ConsoleManager
+    class OGN_API ConsoleManager
     {
     public:
         ConsoleManager();

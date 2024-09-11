@@ -7,10 +7,10 @@
 
 namespace origin
 {
-    class LinuxWindow : public Window
+    class OGN_API LinuxWindow : public Window
     {
 	public:
-        LinuxWindow(const char* title, uint32_t width, uint32_t height, bool maximized);
+        LinuxWindow(const char* title, u32 width, u32 height, bool maximized);
 
 		void DestroyWindow() override;
 		void UpdateEvents() override;
@@ -25,8 +25,8 @@ namespace origin
 
 
 		const char* GetTitle() const override { return m_Data.Title.c_str(); }
-		uint32_t GetWidth() const override { return m_Data.Width; }
-		uint32_t GetHeight() const override { return m_Data.Height; }
+		u32 GetWidth() const override { return m_Data.Width; }
+		u32 GetHeight() const override { return m_Data.Height; }
 		void* GetNativeWindow() override { return m_MainWindow; }
 
 	private:

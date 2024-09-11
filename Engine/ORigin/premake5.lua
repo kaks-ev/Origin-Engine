@@ -1,7 +1,7 @@
 -- Copyright (c) 2022-present Evangelion Manuhutu | ORigin Engine
 
 project "ORigin"
-    kind "StaticLib"
+    kind "SharedLib"
     language "C++"
     cppdialect "C++20"
     staticruntime "off"
@@ -61,7 +61,7 @@ project "ORigin"
         "FMT",
     }
     
-    defines { "_CRT_SECURE_NO_WARNINGS" }
+    defines { "_CRT_SECURE_NO_WARNINGS", "OGN_DLL_EXPORT" }
     buildoptions { "/utf-8" }
 
     -- ////////////////////////////////

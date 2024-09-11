@@ -9,7 +9,7 @@
 
 namespace origin {
 
-	class Layer
+	class OGN_API Layer
 	{
 	protected:
 		std::string m_Name;

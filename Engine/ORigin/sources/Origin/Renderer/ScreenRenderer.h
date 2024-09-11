@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class ScreenRenderer
+	class OGN_API ScreenRenderer
 	{ 
 	public:
 		ScreenRenderer() = default;

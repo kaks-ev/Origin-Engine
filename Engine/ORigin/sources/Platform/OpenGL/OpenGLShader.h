@@ -7,7 +7,7 @@
 
 namespace origin
 {
-    class OpenGLShader final : public Shader
+    class OGN_API OpenGLShader final : public Shader
     {
     public:
         OpenGLShader(const std::filesystem::path &filepath, bool recompile);
@@ -23,10 +23,10 @@ namespace origin
 
         void SetBool(const std::string &name, bool boolean) override;
 
-        void SetFloat(const std::string &name, float v0) override;
-        void SetFloat(const std::string &name, float v0, float v1) override;
-        void SetFloat(const std::string &name, float v0, float v1, float v2) override;
-        void SetFloat(const std::string &name, float v0, float v1, float v2, float v3) override;
+        void SetFloat(const std::string &name, f32 v0) override;
+        void SetFloat(const std::string &name, f32 v0, f32 v1) override;
+        void SetFloat(const std::string &name, f32 v0, f32 v1, f32 v2) override;
+        void SetFloat(const std::string &name, f32 v0, f32 v1, f32 v2, f32 v3) override;
 
         void SetInt(const std::string &name, i32 v0) override;
         void SetInt(const std::string &name, i32 v0, i32 v1) override;
@@ -45,10 +45,10 @@ namespace origin
 
     private:
         void SetUniformBool(const std::string &name, bool boolean);
-        void SetUniformFloat(const std::string &name, float v0);
-        void SetUniformFloat(const std::string &name, float v0, float v1);
-        void SetUniformFloat(const std::string &name, float v0, float v1, float v2);
-        void SetUniformFloat(const std::string &name, float v0, float v1, float v2, float v3);
+        void SetUniformFloat(const std::string &name, f32 v0);
+        void SetUniformFloat(const std::string &name, f32 v0, f32 v1);
+        void SetUniformFloat(const std::string &name, f32 v0, f32 v1, f32 v2);
+        void SetUniformFloat(const std::string &name, f32 v0, f32 v1, f32 v2, f32 v3);
         void SetUniformInt(const std::string &name, i32 v0);
         void SetUniformInt(const std::string &name, i32 v0, i32 v1);
         void SetUniformInt(const std::string &name, i32 v0, i32 v1, i32 v2);

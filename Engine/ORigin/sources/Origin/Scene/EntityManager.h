@@ -9,7 +9,7 @@
 
 namespace origin
 {
-	class EntityManager
+	class OGN_API EntityManager
 	{
 	public:
 		static Entity CreateEntity(const std::string &name, Scene *scene, EntityType type);

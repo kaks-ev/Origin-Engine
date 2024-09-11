@@ -5,7 +5,7 @@
 
 namespace origin
 {
-    class VulkanCommandBuffer
+    class OGN_API VulkanCommandBuffer
     {
     public:
 

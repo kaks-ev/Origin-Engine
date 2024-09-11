@@ -8,7 +8,7 @@
 #include <Jolt/Physics/Collision/CollideShape.h>
 namespace origin
 {
-    class JoltContactListener : public JPH::ContactListener
+    class OGN_API JoltContactListener : public JPH::ContactListener
     {
     public:
         virtual JPH::ValidateResult	OnContactValidate(const JPH::Body &inBody1, const JPH::Body &inBody2, JPH::RVec3Arg inBaseOffset, const JPH::CollideShapeResult &inCollisionResult) override;

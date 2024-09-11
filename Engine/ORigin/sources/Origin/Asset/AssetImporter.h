@@ -13,10 +13,10 @@
 
 namespace origin
 {
-    class Scene;
-    using AssetImportFunction = std::function<std::shared_ptr<Asset>(AssetHandle, const AssetMetadata &)>;
+    class OGN_API Scene;
+    using AssetImportFunction = std::function<Ref<Asset>(AssetHandle, const AssetMetadata &)>;
 
-    class AssetTaskBase
+    class OGN_API AssetTaskBase
     {
     public:
         virtual ~AssetTaskBase() = default;
@@ -24,14 +24,14 @@ namespace origin
     };
 
     template<typename FutureT>
-    class AssetTask : public AssetTaskBase
+    class OGN_API AssetTask : public AssetTaskBase
     {
     public:
-        std::shared_ptr<Asset> *Value;
+        Ref<Asset> *Value;
         std::future<FutureT> Future;
 
         template<typename Func, typename... Args>
-        AssetTask(std::shared_ptr<Asset> *asset, Func &&func, Args&&... args)
+        AssetTask(Ref<Asset> *asset, Func &&func, Args&&... args)
             : Value(asset)
         {
             Future = std::async(std::launch::async, std::forward<Func>(func), std::forward<Args>(args)...);
@@ -69,88 +69,88 @@ namespace origin
         }
 
         // disable copy constructor and assignment operator
-        AssetTask(const AssetTask &) = delete;
-        AssetTask &operator=(const AssetTask &) = delete;
+        //AssetTask(const AssetTask &) = delete;
+        //AssetTask &operator=(const AssetTask &) = delete;
     };
 
-    struct AssetTaskWorker
+    struct OGN_API AssetTaskWorker
     {
         template<typename T>
         void AddTask(AssetTask<T> &task)
         {
-            TaskQueue.push(std::make_unique<AssetTask<T>>(std::move(task)));
+            TaskQueue.push(CreateScope<AssetTask<T>>(std::move(task)));
         }
 
         // update this on main thread
         void Update(Timestep ts);
 
-        std::queue<std::unique_ptr<AssetTaskBase>> TaskQueue;
-        float Timer = 0.0f;
+        std::queue<Scope<AssetTaskBase>> TaskQueue;
+        f32 Timer = 0.0f;
     };
 
-    class AssetImporter
+    class OGN_API AssetImporter
     {
     public:
-        static std::shared_ptr<Asset> ImportAsset(AssetHandle handle, const AssetMetadata& metadata);
+        static Ref<Asset> ImportAsset(AssetHandle handle, const AssetMetadata& metadata);
         static void SyncToMainThread(Timestep ts);
     };
 
-    class FontImporter
+    class OGN_API FontImporter
     {
     public:
-        static std::shared_ptr<Font> Import(AssetHandle handle, AssetMetadata metadata);
-        static void LoadAsync(std::shared_ptr<Asset> *font, const std::filesystem::path &filepath);
+        static Ref<Font> Import(AssetHandle handle, AssetMetadata metadata);
+        static void LoadAsync(Ref<Asset> *font, const std::filesystem::path &filepath);
 
     private:
         friend class AssetImporter;
     };
 
-    class AudioImporter
+    class OGN_API AudioImporter
     {
     public:
-        static std::shared_ptr<AudioSource> Import(AssetHandle handle, AssetMetadata metadata);
-        static std::shared_ptr<AudioSource> LoadAudioSource(const std::filesystem::path &filepath);
-        static std::shared_ptr<AudioSource> LoadStreamingSource(const std::filesystem::path &filepath);
+        static Ref<AudioSource> Import(AssetHandle handle, AssetMetadata metadata);
+        static Ref<AudioSource> LoadAudioSource(const std::filesystem::path &filepath);
+        static Ref<AudioSource> LoadStreamingSource(const std::filesystem::path &filepath);
     };
 
-    class SceneImporter
+    class OGN_API SceneImporter
     {
     public:
-        static std::shared_ptr<Scene> Import(AssetHandle handle, const AssetMetadata& metadata);
-        static std::shared_ptr<Scene> LoadScene(const std::filesystem::path &filepath);
+        static Ref<Scene> Import(AssetHandle handle, const AssetMetadata &metadata);
+        static Ref<Scene> LoadScene(const std::filesystem::path &filepath);
         static AssetHandle OpenScene(const std::filesystem::path &filepath);
-        static void SaveScene(std::shared_ptr<Scene> scene, const std::filesystem::path &path);
+        static void SaveScene(Ref<Scene> scene, const std::filesystem::path &path);
     };
 
-    class TextureImporter
+    class OGN_API TextureImporter
     {
     public:
-        static std::shared_ptr<Texture2D> ImportTexture2D(AssetHandle handle, const AssetMetadata& metadata);
-        static std::shared_ptr<Texture2D> LoadTexture2D(const std::filesystem::path &path);
+        static Ref<Texture2D> ImportTexture2D(AssetHandle handle, const AssetMetadata &metadata);
+        static Ref<Texture2D> LoadTexture2D(const std::filesystem::path &path);
     };
 
-    class ModelImporter
+    class OGN_API ModelImporter
     {
     public:
-        static std::shared_ptr<StaticMeshData> ImportStaticMesh(AssetHandle handle, const AssetMetadata &metadata);
-        static std::shared_ptr<StaticMeshData> LoadStaticMesh(const std::filesystem::path& filepath);
+        static Ref<StaticMeshData> ImportStaticMesh(AssetHandle handle, const AssetMetadata &metadata);
+        static Ref<StaticMeshData> LoadStaticMesh(const std::filesystem::path &filepath);
 
-        static std::shared_ptr<MeshData> ImportMesh(AssetHandle handle, const AssetMetadata &metadata);
-        static std::shared_ptr<MeshData> LoadMesh(const std::filesystem::path& filepath);
+        static Ref<MeshData> ImportMesh(AssetHandle handle, const AssetMetadata &metadata);
+        static Ref<MeshData> LoadMesh(const std::filesystem::path &filepath);
     };
 
-    class SpriteSheetImporter
+    class OGN_API SpriteSheetImporter
     {
     public:
-        static std::shared_ptr<SpriteSheet> Import(AssetHandle handle, const AssetMetadata &metadata);
-        static std::shared_ptr<SpriteSheet> Load(const std::filesystem::path &filepath);
+        static Ref<SpriteSheet> Import(AssetHandle handle, const AssetMetadata &metadata);
+        static Ref<SpriteSheet> Load(const std::filesystem::path &filepath);
     };
 
-    class MaterialImporter
+    class OGN_API MaterialImporter
     {
     public:
-        static std::shared_ptr<Material> Import(AssetHandle handle, const AssetMetadata &metadata);
-        static std::shared_ptr<Material> Load(const std::filesystem::path &filepath);
+        static Ref<Material> Import(AssetHandle handle, const AssetMetadata &metadata);
+        static Ref<Material> Load(const std::filesystem::path &filepath);
     };
 }
 

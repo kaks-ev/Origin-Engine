@@ -11,7 +11,7 @@
 namespace origin
 {
 
-	class Command
+	class OGN_API Command
 	{
 	public:
 		virtual ~Command() = default;
@@ -19,7 +19,7 @@ namespace origin
 		virtual void Undo() = 0;
 	};
 
-	class CommandManager
+	class OGN_API CommandManager
 	{
 	public:
 		CommandManager() = default;

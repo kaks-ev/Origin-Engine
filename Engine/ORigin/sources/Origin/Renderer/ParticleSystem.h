@@ -9,7 +9,7 @@
 
 namespace origin {
 
-	struct ParticleProps
+	struct OGN_API ParticleProps
 	{
 		glm::vec3 Position;
 		glm::vec3 Rotation;
@@ -20,19 +20,19 @@ namespace origin {
 		glm::vec4 ColorBegin;
 		glm::vec4 ColorEnd;
 
-		float SizeBegin;
-		float SizeEnd;
-		float SizeVariation;
-		float LifeTime;
+		f32 SizeBegin;
+		f32 SizeEnd;
+		f32 SizeVariation;
+		f32 LifeTime;
 	};
 
-	class ParticleComponent;
-	class ParticleSystem
+	class OGN_API ParticleComponent;
+	class OGN_API ParticleSystem
 	{
 	public:
 		ParticleSystem();
 
-		void OnUpdate(float deltaTime);
+		void OnUpdate(f32 deltaTime);
 		void OnRender();
 
 		void Emit(const ParticleProps& particleProps);
@@ -51,10 +51,10 @@ namespace origin {
 			glm::vec3 Velocity;
 
 			glm::vec4 ColorBegin, ColorEnd;
-			float SizeBegin, SizeEnd;
+			f32 SizeBegin, SizeEnd;
 
-			float LifeTime = 1.0f;
-			float LifeRemaining = 0.0f;
+			f32 LifeTime = 1.0f;
+			f32 LifeRemaining = 0.0f;
 
 			bool Active = false;
 		};

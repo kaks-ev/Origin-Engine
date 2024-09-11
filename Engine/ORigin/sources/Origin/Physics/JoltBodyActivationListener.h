@@ -10,7 +10,7 @@
 
 namespace origin
 {
-    class JoltBodyActivationListener : public JPH::BodyActivationListener
+    class OGN_API JoltBodyActivationListener : public JPH::BodyActivationListener
     {
     public:
         virtual void OnBodyActivated(const JPH::BodyID &inBodyID, uint64_t inBodyUserData) override;

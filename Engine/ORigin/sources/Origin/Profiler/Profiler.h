@@ -12,7 +12,7 @@
 
 namespace origin
 {
-	struct ProfilerResult
+	struct OGN_API ProfilerResult
 	{
 		const char *Name;
 		float Duration = 0.0;
@@ -20,7 +20,7 @@ namespace origin
 	};
 
 	template<typename Fn>
-	class ProfilerTimer
+	class OGN_API ProfilerTimer
 	{
 	public:
 		ProfilerTimer(const char *name, Fn&& func)

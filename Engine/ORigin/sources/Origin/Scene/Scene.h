@@ -15,10 +15,10 @@ class b2World;
 
 namespace origin
 {
-    class Entity;
-    class Physics2D;
+    class OGN_API Entity;
+    class OGN_API Physics2D;
 
-    class Scene : public Asset
+    class OGN_API Scene : public Asset
     {
     public:
         Scene();

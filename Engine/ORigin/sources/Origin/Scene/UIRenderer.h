@@ -8,13 +8,13 @@
 
 namespace origin
 {
-	class UIRenderer
+	class OGN_API UIRenderer
 	{
 	public:
 		UIRenderer() = default;
 
-		void CreateFramebuffer(uint32_t vpW, uint32_t vpH, float orthoW, float orthoH);
-		void SetViewportSize(uint32_t vpW, uint32_t vpH, float orthoW, float orthoH);
+		void CreateFramebuffer(u32 vpW, u32 vpH, f32 orthoW, f32 orthoH);
+		void SetViewportSize(u32 vpW, u32 vpH, f32 orthoW, f32 orthoH);
 		void Unload();
 		void RenderFramebuffer();
 		void Render();
@@ -22,8 +22,8 @@ namespace origin
 		std::vector<UIComponent> &GetUIs() { return m_UIs; }
 
 	private:
-		uint32_t m_VAO = 0, m_VBO = 0;
-		std::shared_ptr<Shader> m_ScreenShader;
+		u32 m_VAO = 0, m_VBO = 0;
+		Ref<Shader> m_ScreenShader;
 		std::vector<UIComponent> m_UIs;
 		glm::mat4 m_Projection;
 	};

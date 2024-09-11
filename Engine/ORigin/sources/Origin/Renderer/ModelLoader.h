@@ -9,7 +9,7 @@
 
 namespace origin
 {
-	struct ModelLoader
+	struct OGN_API ModelLoader
 	{
 		static std::shared_ptr<StaticMeshData> LoadStaticModel(const std::filesystem::path &filepath);
 		static void ProcessStaticMesh(const std::shared_ptr<StaticMeshData> &data);

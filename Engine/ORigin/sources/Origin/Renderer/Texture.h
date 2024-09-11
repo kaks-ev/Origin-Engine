@@ -13,13 +13,13 @@
 
 namespace origin {
 
-	enum class ImageWrapMode
+	enum class OGN_API ImageWrapMode
 	{
 		CLAMP_TO_EDGE,
 		REPEAT
 	};
 
-	enum class ImageFormat
+	enum class OGN_API ImageFormat
 	{
 		R8, RGB8, RGBA8, RGBA32F
 	};
@@ -31,7 +31,7 @@ namespace origin {
 		NearestMipmapLinear, NearestMipmapNearest
 	};
 
-	struct TextureSpecification
+	struct OGN_API TextureSpecification
 	{
 		u32 Width = 1, Height = 1;
 		ImageFormat Format = ImageFormat::RGBA8;
@@ -42,7 +42,7 @@ namespace origin {
 		TextureSpecification() = default;
 	};
 
-	class Texture : public Asset
+	class OGN_API Texture : public Asset
 	{
 	public:
 		~Texture() override = default;
@@ -71,7 +71,7 @@ namespace origin {
 		virtual bool operator==(const Texture& other) const = 0;
 	};
 
-	class Texture2D : public Texture
+	class OGN_API Texture2D : public Texture
 	{
 	public:
 		static std::shared_ptr<Texture2D> Create(const TextureSpecification& specification, Buffer data = Buffer());
@@ -82,7 +82,7 @@ namespace origin {
 		[[nodiscard]] AssetType GetType() const override { return GetStaticType(); }
 	};
 
-	class TextureCube : public Texture
+	class OGN_API TextureCube : public Texture
 	{
 	public:
 		enum Faces

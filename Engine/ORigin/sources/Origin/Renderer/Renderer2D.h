@@ -11,7 +11,7 @@
 
 namespace origin
 {
-	class Renderer2D
+	class OGN_API Renderer2D
 	{
 	public:
 		static void Init();
@@ -32,24 +32,24 @@ namespace origin
 		static void DrawQuad(const glm::mat4& transform, const std::shared_ptr<SubTexture2D>& subTexture, const glm::vec2&tilingFactor = glm::vec2(1.0f), const glm::vec4& tintColor = glm::vec4(1.0f));
 		static void DrawQuad(const glm::mat4& transform, const std::shared_ptr<Texture2D>& texture, const glm::vec2&tilingFactor = glm::vec2(1.0f), const glm::vec4& tintColor = glm::vec4(1.0f));
 
-		static void DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color);
-		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color);
-		static void DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2&tilingFactor = glm::vec2(1.0f), const glm::vec4& tintColor = glm::vec4(1.0f));
-		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2&tilingFactor = glm::vec2(1.0f), const glm::vec4& tintColor = glm::vec4(1.0f));
+		static void DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, f32 rotation, const glm::vec4& color);
+		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, f32 rotation, const glm::vec4& color);
+		static void DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, f32 rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2&tilingFactor = glm::vec2(1.0f), const glm::vec4& tintColor = glm::vec4(1.0f));
+		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, f32 rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2&tilingFactor = glm::vec2(1.0f), const glm::vec4& tintColor = glm::vec4(1.0f));
 
 		static void DrawRect(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color = glm::vec4(1.0f));
 		static void DrawRect(const glm::mat4& transform, const glm::vec4& color = glm::vec4(1.0f));
 
-		static void DrawCircle(const glm::vec3 &position, const glm::vec2 &scale, const glm::vec4& color, float thickness, float fade = 0.0f);
-		static void DrawCircle(const glm::mat4& transform, const glm::vec4& color, float thickness, float fade = 0.0f);
+		static void DrawCircle(const glm::vec3 &position, const glm::vec2 &scale, const glm::vec4& color, f32 thickness, f32 fade = 0.0f);
+		static void DrawCircle(const glm::mat4& transform, const glm::vec4& color, f32 thickness, f32 fade = 0.0f);
 		static void DrawLine(const glm::vec3& p0, const glm::vec3& p1, const glm::vec4 &color = glm::vec4(1.0f));
 		static void DrawSprite(const glm::mat4& transform, SpriteRenderer2DComponent& src);
 
 		struct TextParams
 		{
 			glm::vec4 Color = glm::vec4(1.0);
-			float Kerning = 0.0f;
-			float LineSpacing = 0.0f;
+			f32 Kerning = 0.0f;
+			f32 LineSpacing = 0.0f;
 		};
 
 		static void DrawString(const std::string& string, std::shared_ptr<Font> font, const glm::mat4& transform, const TextParams& textParams, glm::vec2 *size = nullptr);

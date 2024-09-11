@@ -14,11 +14,11 @@
 
 namespace origin
 {
-    class VertexArray;
-    class VertexBuffer;
-    class Texture2D;
+    class OGN_API VertexArray;
+    class OGN_API VertexBuffer;
+    class OGN_API Texture2D;
 
-    struct StaticMeshVertexData
+    struct OGN_API StaticMeshVertexData
     {
         glm::vec3 Position;
         glm::vec3 Normals;
@@ -29,7 +29,7 @@ namespace origin
         float SpecularIndex = 0.0f;
     };
 
-    class StaticMeshData : public Asset
+    class OGN_API StaticMeshData : public Asset
     {
     public:
         std::vector<StaticMeshVertexData> vertices;
@@ -45,7 +45,7 @@ namespace origin
     // Dynamic Mesh
 
 #define MAX_BONE_INFLUENCE 4
-    struct MeshVertexData
+    struct OGN_API MeshVertexData
     {
         glm::vec3 Position;
         glm::vec3 Normals;
@@ -54,13 +54,13 @@ namespace origin
         float Weights[MAX_BONE_INFLUENCE];
     };
 
-    struct BoneInfo
+    struct OGN_API BoneInfo
     {
         int ID;
         glm::mat4 OffsetMatrix;
     };
 
-    class MeshData : public Asset
+    class OGN_API MeshData : public Asset
     {
     public:
         std::vector<MeshVertexData> vertices;

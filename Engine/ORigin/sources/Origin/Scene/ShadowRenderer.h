@@ -10,9 +10,9 @@
 
 namespace origin 
 {
-	enum class LightingType;
+	enum class OGN_API LightingType;
 
-	class ShadowRenderer
+	class OGN_API ShadowRenderer
 	{
 	public:
 		void OnCreate(LightingType type);

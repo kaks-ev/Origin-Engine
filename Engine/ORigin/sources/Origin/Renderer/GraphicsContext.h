@@ -5,9 +5,9 @@
 
 namespace origin
 {
-	class Window;
+	class OGN_API Window;
 
-	class GraphicsContext
+	class OGN_API GraphicsContext
 	{
 	public:
 		virtual ~GraphicsContext() = default;

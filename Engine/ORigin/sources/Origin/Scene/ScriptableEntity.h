@@ -8,7 +8,7 @@
 
 namespace origin
 {
-	class ScriptableEntity
+	class OGN_API ScriptableEntity
 	{
 	public:
 		ScriptableEntity() = default;

@@ -22,7 +22,7 @@
 
 namespace origin
 {
-	class Math
+	class OGN_API Math
 	{
 	public:
 		static bool DecomposeTransform(const glm::mat4& transform, glm::vec3& outTranslation, glm::quat& rotation, glm::vec3& scale);

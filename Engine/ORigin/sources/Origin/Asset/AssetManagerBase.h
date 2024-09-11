@@ -11,7 +11,7 @@ namespace origin {
 
     using AssetMap = std::map<AssetHandle, std::shared_ptr<Asset>>;
 
-    class AssetManagerBase
+    class OGN_API AssetManagerBase
     {
     public:
         virtual std::shared_ptr<Asset> GetAsset(AssetHandle handle) = 0;

@@ -8,7 +8,7 @@
 
 namespace origin
 {
-    struct OBB
+    struct OGN_API OBB
     {
         glm::vec3 Center;
         glm::vec3 HalfExtents;

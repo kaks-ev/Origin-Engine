@@ -14,36 +14,36 @@ namespace origin {
 #define LIGHTING_BINDING 1
 #define MATERIAL_BINDING 2
 
-	struct RenderData
+	struct OGN_API RenderData
 	{
-		static const uint32_t MaxTriangles = 1024;
-		static const uint32_t MaxVertices = MaxTriangles * 24;
-		static const uint32_t MaxQuadIndices = MaxTriangles * 6;
-		static const uint32_t MaxTextureSlots = 32;
+		static const u32 MaxTriangles = 1024;
+		static const u32 MaxVertices = MaxTriangles * 24;
+		static const u32 MaxQuadIndices = MaxTriangles * 6;
+		static const u32 MaxTextureSlots = 32;
 	};
 
-	struct Statistics
+	struct OGN_API Statistics
 	{
-		uint32_t DrawCalls = 0;
-		uint32_t QuadCount = 0;
-		uint32_t CircleCount = 0;
-		uint32_t LineCount = 0;
+		u32 DrawCalls = 0;
+		u32 QuadCount = 0;
+		u32 CircleCount = 0;
+		u32 LineCount = 0;
 
-		uint32_t CubeCount = 0;
-		uint32_t SphereCount = 0;
+		u32 CubeCount = 0;
+		u32 SphereCount = 0;
 
-		uint32_t GetTotalQuadVertexCount() const { return QuadCount * 4; }
-		uint32_t GetTotalQuadIndexCount() const { return QuadCount * 6; }
-		uint32_t GetTotalCubeVertexCount() const { return CubeCount * 24; }
-		uint32_t GetTotalCubeIndexCount() const { return CubeCount * 36; }
-        uint32_t GetTotalSphereVertexCount() const { return SphereCount * 544; }
-        uint32_t GetTotalSphereIndexCount() const { return SphereCount * 768; }
+		u32 GetTotalQuadVertexCount() const { return QuadCount * 4; }
+		u32 GetTotalQuadIndexCount() const { return QuadCount * 6; }
+		u32 GetTotalCubeVertexCount() const { return CubeCount * 24; }
+		u32 GetTotalCubeIndexCount() const { return CubeCount * 36; }
+        u32 GetTotalSphereVertexCount() const { return SphereCount * 544; }
+        u32 GetTotalSphereIndexCount() const { return SphereCount * 768; }
 
 		void Reset() { memset(this, 0, sizeof(Statistics)); };
 	};
 
-	class ShaderLibrary;
-	class Renderer
+	class OGN_API ShaderLibrary;
+	class OGN_API Renderer
 	{
 	public:
 		static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
@@ -51,7 +51,7 @@ namespace origin {
 		static bool Init();
 		static void Shutdown();
 
-		static void OnWindowResize(uint32_t width, uint32_t height);
+		static void OnWindowResize(u32 width, u32 height);
 		static void SetCurrentShader(const std::shared_ptr<Shader> &shader);
 
 		const static std::shared_ptr<Shader>& GetCurrentShader() { return s_GlobalShader; }

@@ -9,7 +9,7 @@
 
 namespace origin
 {
-    class AudioEngine
+    class OGN_API AudioEngine
     {
     public:
         static void Init();

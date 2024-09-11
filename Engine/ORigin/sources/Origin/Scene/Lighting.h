@@ -9,7 +9,7 @@
 
 namespace origin {
 
-	enum class LightingType
+	enum class OGN_API LightingType
 	{
 		Spot, Point, Directional, None
 	};
@@ -37,7 +37,7 @@ namespace origin {
 		}
 	}
 
-	struct DirLightBufferData
+	struct OGN_API DirLightBufferData
 	{
 		glm::mat4 LightSpaceMat = glm::mat4(1.0f);
 		glm::vec4 Position = glm::vec4(0.0f);
@@ -47,7 +47,7 @@ namespace origin {
 		float Specular = 1.0f;
 	};
 	
-	class Lighting
+	class OGN_API Lighting
 	{
 	public:
 		Lighting(LightingType type);

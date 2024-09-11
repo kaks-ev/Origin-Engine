@@ -9,7 +9,7 @@
 
 namespace origin
 {
-    class Frustum
+    class OGN_API Frustum
     {
     public:
         enum Plane

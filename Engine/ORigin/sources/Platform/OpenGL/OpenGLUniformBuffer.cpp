@@ -10,7 +10,7 @@
 
 namespace origin
 {
-	OpenGLUniformBuffer::OpenGLUniformBuffer(uint32_t bufferSize, uint32_t bindingPoint)
+	OpenGLUniformBuffer::OpenGLUniformBuffer(u32 bufferSize, u32 bindingPoint)
 		: m_BindingPoint(bindingPoint)
 	{
 		OGN_PROFILER_RENDERING();
@@ -42,7 +42,7 @@ namespace origin
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
 
-	void OpenGLUniformBuffer::SetData(const void* data, uint32_t size, uint32_t offset)
+	void OpenGLUniformBuffer::SetData(const void* data, u32 size, u32 offset)
 	{
 		OGN_PROFILER_RENDERING();
 
@@ -55,7 +55,7 @@ namespace origin
 		glBufferSubData(GL_UNIFORM_BUFFER, offset, size, data);
 	}
 
-	uint32_t OpenGLUniformBuffer::Get()
+	u32 OpenGLUniformBuffer::Get()
 	{
 		return m_RendererID;
 	}

@@ -24,7 +24,7 @@ extern "C" {
 namespace origin {
 
 	using ScriptFieldMap = std::unordered_map<std::string, ScriptFieldInstance>;
-	class ScriptEngine
+	class OGN_API ScriptEngine
 	{
 	public:
 		static void Init();

@@ -10,7 +10,7 @@
 
 namespace origin
 {
-    class UUID
+    class OGN_API UUID
     {
     public:
         UUID();

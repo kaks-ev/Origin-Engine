@@ -10,7 +10,7 @@
 
 namespace origin
 {
-	enum class FramebufferTextureFormat
+	enum class OGN_API FramebufferTextureFormat
 	{
 		None = 0,
 		// Color
@@ -25,7 +25,7 @@ namespace origin
 		DEPTH_CUBE
 	};
 
-	struct FramebufferTextureSpecification
+	struct OGN_API FramebufferTextureSpecification
 	{
 		FramebufferTextureSpecification() = default;
 		FramebufferTextureSpecification(FramebufferTextureFormat format)
@@ -34,7 +34,7 @@ namespace origin
 		FramebufferTextureFormat TextureFormat = FramebufferTextureFormat::None;
 	};
 
-	struct FramebufferAttachmentSpecification
+	struct OGN_API FramebufferAttachmentSpecification
 	{
 		FramebufferAttachmentSpecification() = default;
 		FramebufferAttachmentSpecification(std::initializer_list<FramebufferTextureSpecification> attachments)
@@ -43,7 +43,7 @@ namespace origin
 		std::vector<FramebufferTextureSpecification> TextureAttachments;
 	};
 
-	struct FramebufferSpecification
+	struct OGN_API FramebufferSpecification
 	{
 		FramebufferAttachmentSpecification Attachments;
 		uint32_t Width = 0, Height = 0;
@@ -54,7 +54,7 @@ namespace origin
 		bool SwapChainTarget = false;
 	};
 
-	class Framebuffer
+	class OGN_API Framebuffer
 	{
 	public:
 		virtual ~Framebuffer() = default;

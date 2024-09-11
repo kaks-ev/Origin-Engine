@@ -12,8 +12,8 @@
 
 namespace origin
 {
-    class Window;
-    class GuiLayer : public Layer
+    class OGN_API Window;
+    class OGN_API GuiLayer : public Layer
     {
     public:
         GuiLayer(const std::shared_ptr<Window> &window);

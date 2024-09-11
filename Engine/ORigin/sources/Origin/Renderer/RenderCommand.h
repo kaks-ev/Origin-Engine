@@ -7,7 +7,7 @@
 
 namespace origin {
 
-	class RenderCommand
+	class OGN_API RenderCommand
 	{
 	public:
 		static void Init()

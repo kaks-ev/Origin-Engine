@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class ProjectSerializer
+	class OGN_API ProjectSerializer
 	{
 	public:
 		ProjectSerializer(std::shared_ptr<Project> project);

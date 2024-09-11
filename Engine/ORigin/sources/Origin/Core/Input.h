@@ -10,7 +10,7 @@
 
 namespace origin
 {
-	class Input
+	class OGN_API Input
 	{
 	public:
 		Input();

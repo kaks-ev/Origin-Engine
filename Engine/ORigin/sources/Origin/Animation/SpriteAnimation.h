@@ -12,7 +12,7 @@
 
 namespace origin
 {
-	struct SpriteAnimationFrame
+	struct OGN_API SpriteAnimationFrame
 	{
 		int FrameBegin = 0;
 		int FrameEnd = 4;
@@ -27,7 +27,7 @@ namespace origin
 		}
 	};
 
-	class SpriteAnimation : public Animation
+	class OGN_API SpriteAnimation : public Animation
 	{
 	public:
 		SpriteAnimation() = default;

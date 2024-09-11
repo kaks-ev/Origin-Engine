@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class OpenGLContext : public GraphicsContext
+	class OGN_API OpenGLContext : public GraphicsContext
 	{
 	public:
 		OpenGLContext() = default;

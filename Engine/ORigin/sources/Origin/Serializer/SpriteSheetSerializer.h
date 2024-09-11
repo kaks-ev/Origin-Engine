@@ -8,7 +8,7 @@
 
 namespace origin
 {
-	class SpriteSheetSerializer
+	class OGN_API SpriteSheetSerializer
 	{
 	public:
 		static bool Serialize(const std::filesystem::path &filepath, const std::shared_ptr<SpriteSheet> &spriteSheet);

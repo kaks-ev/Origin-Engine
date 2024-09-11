@@ -7,7 +7,7 @@
 
 namespace origin
 {
-    enum LogLevel
+    enum OGN_API LogLevel
     {
         Info     = BIT(1),
         Warning  = BIT(2),

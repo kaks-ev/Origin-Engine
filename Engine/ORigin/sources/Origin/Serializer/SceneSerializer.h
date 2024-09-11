@@ -8,7 +8,7 @@
 
 namespace origin
 {
-	class SceneSerializer
+	class OGN_API SceneSerializer
 	{
 	public:
 		SceneSerializer(const std::shared_ptr<Scene>& scene);

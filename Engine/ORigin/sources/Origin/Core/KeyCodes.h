@@ -11,7 +11,7 @@ namespace origin
 
 	namespace Key
 	{
-		enum : KeyCode
+		enum OGN_API : KeyCode
 		{
 			// From glfw3.h
 			Space = 32,

@@ -8,7 +8,7 @@
 
 namespace origin {
 
-	class RendererAPI
+	class OGN_API RendererAPI
 	{
 	public:
 		enum class API

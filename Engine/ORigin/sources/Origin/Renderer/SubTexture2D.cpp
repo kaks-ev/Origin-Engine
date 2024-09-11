@@ -5,7 +5,7 @@
 
 namespace origin {
 
-	SubTexture2D::SubTexture2D(const std::shared_ptr<Texture2D>& texture, const glm::vec2& min, const glm::vec2& max)
+	SubTexture2D::SubTexture2D(const Ref<Texture2D>& texture, const glm::vec2& min, const glm::vec2& max)
 		: m_Texture(texture)
 	{
 		m_TexCoords[0] = glm::vec2(min.x, min.y);
@@ -14,16 +14,16 @@ namespace origin {
 		m_TexCoords[3] = glm::vec2(min.x, max.y);
 	}
 
-	std::shared_ptr<SubTexture2D> SubTexture2D::CreateFromCoords(const std::shared_ptr<Texture2D>& texture, const glm::vec2& coords, const glm::vec2& cellSize, const glm::vec2& spriteSize)
+	Ref<SubTexture2D> SubTexture2D::CreateFromCoords(const Ref<Texture2D>& texture, const glm::vec2& coords, const glm::vec2& cellSize, const glm::vec2& spriteSize)
 	{
 		glm::vec2 min{ (coords.x * cellSize.x) / texture->GetWidth(), (coords.y * cellSize.y) / texture->GetHeight() };
 		glm::vec2 max{ ((coords.x + spriteSize.x) * cellSize.x) / texture->GetWidth(), ((coords.y + spriteSize.y) * cellSize.y) / texture->GetHeight() };
-		return std::make_shared<SubTexture2D>(texture, min, max);
+		return CreateRef<SubTexture2D>(texture, min, max);
 	}
 
-	std::shared_ptr<SubTexture2D> SubTexture2D::CreateFromSpriteSheet(const std::shared_ptr<Texture2D> &texture, SpriteSheetData sprite)
+	Ref<SubTexture2D> SubTexture2D::CreateFromSpriteSheet(const Ref<Texture2D> &texture, SpriteSheetData sprite)
 	{
-		return std::make_shared<SubTexture2D>(texture, sprite.Min, sprite.Max);
+		return CreateRef<SubTexture2D>(texture, sprite.Min, sprite.Max);
 	}
 
 }

@@ -8,7 +8,7 @@
 
 namespace origin {
 
-	struct Buffer
+	struct OGN_API Buffer
 	{
 		uint8_t* Data = nullptr;
 		uint64_t Size = 0;

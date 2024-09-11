@@ -7,21 +7,21 @@
 
 namespace origin
 {
-	class OpenGLUniformBuffer : public UniformBuffer
+	class OGN_API OpenGLUniformBuffer : public UniformBuffer
 	{
 	public:
-		OpenGLUniformBuffer(uint32_t size, uint32_t binding);
+		OpenGLUniformBuffer(u32 size, u32 binding);
 		~OpenGLUniformBuffer();
 
 		void Bind() override;
 		void Unbind() override;
-		void SetData(const void* data, uint32_t size, uint32_t offset = 0) override;
+		void SetData(const void* data, u32 size, u32 offset = 0) override;
 
-		uint32_t Get() override;
+		u32 Get() override;
 	private:
-		uint32_t m_RendererID = 0;
-		uint32_t m_BufferSize = 0;
-		uint32_t m_BindingPoint;
+		u32 m_RendererID = 0;
+		u32 m_BufferSize = 0;
+		u32 m_BindingPoint;
 	};
 }
 

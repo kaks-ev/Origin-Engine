@@ -7,7 +7,7 @@
 
 namespace origin
 {
-    class AudioListener
+    class OGN_API AudioListener
     {
     public:
         AudioListener() = default;

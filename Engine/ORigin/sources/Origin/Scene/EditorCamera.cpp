@@ -13,7 +13,7 @@
 
 namespace origin {
 
-    void EditorCamera::InitPerspective(float fovy, float aspectRatio, float nearClip, float farClip)
+    void EditorCamera::InitPerspective(f32 fovy, f32 aspectRatio, f32 nearClip, f32 farClip)
     {
         m_ProjectionType = ProjectionType::Perspective;
         m_FOV = fovy;
@@ -25,7 +25,7 @@ namespace origin {
         UpdateProjection();
     }
 
-    void EditorCamera::InitOrthographic(float size, float nearClip, float farClip)
+    void EditorCamera::InitOrthographic(f32 size, f32 nearClip, f32 farClip)
     {
         m_ProjectionType = ProjectionType::Orthographic;
         m_OrthoScale = size;
@@ -67,10 +67,10 @@ namespace origin {
         }
     }
 
-    float EditorCamera::GetZoomSpeed() const
+    f32 EditorCamera::GetZoomSpeed() const
     {
-        float speed = 0.0f;
-        float distance = 0.0f;
+        f32 speed = 0.0f;
+        f32 distance = 0.0f;
         switch (m_ProjectionType)
         {
         case ProjectionType::Perspective:
@@ -87,7 +87,7 @@ namespace origin {
         return speed;
     }
 
-    void EditorCamera::SetViewportSize(float width, float height)
+    void EditorCamera::SetViewportSize(f32 width, f32 height)
     {
         m_ViewportWidth = width;
         m_ViewportHeight = height;
@@ -95,17 +95,17 @@ namespace origin {
         UpdateProjection();
     }
 
-    void EditorCamera::SetFov(float fovy)
+    void EditorCamera::SetFov(f32 fovy)
     {
         m_FOV = fovy;
     }
 
-    void EditorCamera::SetNear(float nearClip)
+    void EditorCamera::SetNear(f32 nearClip)
     {
         m_NearClip = nearClip;
     }
 
-    void EditorCamera::SetFar(float farClip)
+    void EditorCamera::SetFar(f32 farClip)
     {
         m_FarClip = farClip;
     }
@@ -127,12 +127,12 @@ namespace origin {
         m_CameraStyle = style;
     }
 
-    void EditorCamera::SetPitch(float pitch)
+    void EditorCamera::SetPitch(f32 pitch)
     {
         m_Pitch = pitch;
     }
 
-    void EditorCamera::SetYaw(float yaw)
+    void EditorCamera::SetYaw(f32 yaw)
     {
         m_Yaw = yaw;
     }
@@ -152,13 +152,13 @@ namespace origin {
         }
     }
 
-    std::pair<float, float> EditorCamera::PanSpeed() const
+    std::pair<f32, f32> EditorCamera::PanSpeed() const
     {
-        float xFactor = 0.0f;
-        float yFactor = 0.0f;
+        f32 xFactor = 0.0f;
+        f32 yFactor = 0.0f;
 
-        float x = std::min(m_ViewportWidth * 0.01f, 1.8f);
-        float y = std::min(m_ViewportHeight * 0.01f, 1.8f);
+        f32 x = std::min(m_ViewportWidth * 0.01f, 1.8f);
+        f32 y = std::min(m_ViewportHeight * 0.01f, 1.8f);
 
         xFactor = 0.0366f * (x * x) - 0.1778f * x + 0.3021f;
         yFactor = 0.0366f * (y * y) - 0.1778f * y + 0.3021f;
@@ -166,7 +166,7 @@ namespace origin {
         return { xFactor, yFactor };
     }
 
-    float EditorCamera::RotationSpeed() const
+    f32 EditorCamera::RotationSpeed() const
     {
         return 0.8f;
     }
@@ -187,8 +187,8 @@ namespace origin {
         {
             bool panOrRotate = Input::Get().IsMouseButtonPressed(Mouse::ButtonRight) || Input::Get().IsMouseButtonPressed(Mouse::ButtonMiddle);
 
-            float offset = 1.0f;
-            int windowPosX, windowPosY;
+            f32 offset = 1.0f;
+            i32 windowPosX, windowPosY;
             glfwGetWindowPos((GLFWwindow *)Input::Get().GetWindow(), &windowPosX, &windowPosY);
             glm::vec2 absMousePos = mouse + glm::vec2(windowPosX, windowPosY);
 
@@ -265,15 +265,15 @@ namespace origin {
                 if (glm::length(input) > 0.0f)
                 {
                     input = glm::normalize(input);
-                    m_Velocity += input * ACCELERATION * (float)ts;
+                    m_Velocity += input * ACCELERATION * (f32)ts;
                 }
                 else
                 {
                     // Decelerate when no input
-                    float speed = glm::length(m_Velocity);
+                    f32 speed = glm::length(m_Velocity);
                     if (speed > 0.0f)
                     {
-                        glm::vec3 deceleration = -glm::normalize(m_Velocity) * DECELERATION * (float)ts;
+                        glm::vec3 deceleration = -glm::normalize(m_Velocity) * DECELERATION * (f32)ts;
                         if (glm::length(deceleration) > speed)
                         {
                             m_Velocity = glm::vec3(0.0f);
@@ -286,12 +286,12 @@ namespace origin {
                 }
 
                 // Clamp velocity to maximum speed
-                float speed = glm::length(m_Velocity);
+                f32 speed = glm::length(m_Velocity);
                 if (speed > MAX_SPEED)
                 {
                     m_Velocity = glm::normalize(m_Velocity) * MAX_SPEED;
                 }
-                m_Position += m_Velocity * (float)ts;
+                m_Position += m_Velocity * (f32)ts;
                 lastPosition = m_Position;
                 m_Distance = 5.0f;
                 m_FocalPoint = lastPosition + GetForwardDirection() * m_Distance;
@@ -314,12 +314,12 @@ namespace origin {
         dispatcher.Dispatch<MouseScrolledEvent>(OGN_BIND_EVENT_FN(EditorCamera::OnMouseScroll));
     }
 
-    void EditorCamera::SetOrthoScale(float value)
+    void EditorCamera::SetOrthoScale(f32 value)
     {
         m_OrthoScale = value;
     }
 
-    void EditorCamera::SetOrthoScaleMax(float max)
+    void EditorCamera::SetOrthoScaleMax(f32 max)
     {
         m_MaxOrthoScale = max;
     }
@@ -331,7 +331,7 @@ namespace origin {
             return false;
         }
 
-        float delta = e.GetYOffset();
+        f32 delta = e.GetYOffset();
         switch (m_ProjectionType)
         {
         case ProjectionType::Perspective:
@@ -388,15 +388,15 @@ namespace origin {
         }
     }
 
-    void EditorCamera::MouseRotate(const glm::vec2& delta, float dt)
+    void EditorCamera::MouseRotate(const glm::vec2& delta, f32 dt)
     {
-        float yawSign = GetUpDirection().y < 0 ? -1.0f : 1.0f;
+        f32 yawSign = GetUpDirection().y < 0 ? -1.0f : 1.0f;
         m_Yaw += yawSign * RotationSpeed() * delta.x;
         m_Pitch += RotationSpeed() * delta.y;
         m_Pitch = glm::clamp(m_Pitch, -89.0f, 89.0f);
     }
 
-    void EditorCamera::MouseZoom(const float delta)
+    void EditorCamera::MouseZoom(const f32 delta)
     {
         switch (m_ProjectionType)
         {
@@ -430,7 +430,7 @@ namespace origin {
         m_AllowedMove = active;
     }
 
-    void EditorCamera::SetDistance(float distance)
+    void EditorCamera::SetDistance(f32 distance)
     {
         m_Distance = distance;
     }

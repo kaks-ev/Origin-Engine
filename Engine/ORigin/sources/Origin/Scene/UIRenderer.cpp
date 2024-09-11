@@ -10,7 +10,7 @@
 
 namespace origin
 {
-	void UIRenderer::CreateFramebuffer(uint32_t vpW, uint32_t vpH, float orthoW, float orthoH)
+	void UIRenderer::CreateFramebuffer(u32 vpW, u32 vpH, f32 orthoW, f32 orthoH)
 	{
 		FramebufferSpecification spec;
 		spec.Attachments = { FramebufferTextureFormat::RGBA8 };
@@ -23,7 +23,7 @@ namespace origin
 			ui.OFramebuffer = Framebuffer::Create(spec);
 		}
 
-		float vertices[] =
+		f32 vertices[] =
 		{
 			 -1.0f,  1.0f,
 			  1.0f,  1.0f,
@@ -38,13 +38,13 @@ namespace origin
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), nullptr);
+		glVertexAttribPointer(0, 2, GL_FLOAT, false, 2 * sizeof(f32), nullptr);
 
 		m_ScreenShader = Renderer::GetShader("Screen");
 		m_Projection = glm::ortho(-orthoW, orthoW, -orthoH, orthoH, 0.0f, 2.0f);
 	}
 
-	void UIRenderer::SetViewportSize(uint32_t width, uint32_t height, float orthoW, float orthoH)
+	void UIRenderer::SetViewportSize(u32 width, u32 height, f32 orthoW, f32 orthoH)
 	{
 		for (UIComponent &ui : m_UIs)
 		{
@@ -68,7 +68,7 @@ namespace origin
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			Renderer2D::Begin(m_Projection);
-			for (int i = 0; i < ui.Components.size(); i++)
+			for (i32 i = 0; i < ui.Components.size(); i++)
 			{
 				if (UIData<TextComponent> *comp = ui.GetComponent<TextComponent>(ui.Components[i]->Name))
 				{

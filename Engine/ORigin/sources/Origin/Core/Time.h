@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class Timestep
+	class OGN_API Timestep
 	{
 	public:
 		Timestep(float time = 0.0)
@@ -26,7 +26,7 @@ namespace origin
 		float m_Time;
 	};
 
-	class Timer
+	class OGN_API Timer
 	{
 	public:
 		Timer()

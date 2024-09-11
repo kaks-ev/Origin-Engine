@@ -46,10 +46,10 @@ namespace origin
         std::string GeometrySources;
     };
 
-    using ShaderData = std::unordered_map<uint32_t, std::vector<uint32_t>>;
-    using ShaderSource = std::unordered_map<uint32_t, std::string>;
+    using ShaderData = std::unordered_map<u32, std::vector<u32>>;
+    using ShaderSource = std::unordered_map<u32, std::string>;
 
-    class Shader
+    class OGN_API Shader
     {
     public:
         virtual ~Shader() = default;
@@ -96,7 +96,7 @@ namespace origin
 
         static ShaderData CompileOrGetVulkanBinaries(const ShaderSource &shaderSources, const std::string &filepath);
         static ShaderData CompileOrGetOpenGLBinaries(ShaderSource &openglCode, const ShaderData &vulkanSpirv, const std::string &filepath);
-        static void Reflect(uint32_t stage, const std::vector<uint32_t> &code);
+        static void Reflect(u32 stage, const std::vector<u32> &code);
 
         static u32 ShaderTypeFromString(const std::string &type, const std::string &filepath);
         static u32 GLShaderStageToShaderC(const u32 stage);

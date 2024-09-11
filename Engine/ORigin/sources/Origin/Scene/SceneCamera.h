@@ -8,7 +8,7 @@
 
 namespace origin {
 
-	class SceneCamera : public Camera
+	class OGN_API SceneCamera : public Camera
 	{
 	public:
 		SceneCamera() = default;

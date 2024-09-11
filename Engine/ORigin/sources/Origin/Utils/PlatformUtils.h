@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class FileDialogs
+	class OGN_API FileDialogs
 	{
 	public:
 		static std::string OpenFile(const char* filter);

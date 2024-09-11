@@ -11,7 +11,7 @@
 
 namespace origin
 {
-	class MeshRenderer
+	class OGN_API MeshRenderer
 	{
 	public:
 		static void Init();

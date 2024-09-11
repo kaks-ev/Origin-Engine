@@ -14,9 +14,9 @@ class b2World;
 
 namespace origin {
 
-	class Scene;
+	class OGN_API Scene;
 
-	class Physics2D
+	class OGN_API Physics2D
 	{
 	public:
 		Physics2D(Scene* scene);

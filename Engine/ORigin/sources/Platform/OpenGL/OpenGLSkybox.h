@@ -14,7 +14,7 @@
 
 namespace origin
 {
-	class OpenGLSkybox : public Skybox
+	class OGN_API OpenGLSkybox : public Skybox
 	{
 	public:
 		OpenGLSkybox(const std::string& filepath, const std::string& format);
@@ -28,11 +28,11 @@ namespace origin
 		std::string m_Filepath;
 		std::string m_ImageFormat;
 
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<Shader> m_Shader;
-		uint32_t m_TextureID;
-		const uint32_t IndicesCount = 36;
+		Ref<VertexArray> m_VertexArray;
+		Ref<VertexBuffer> m_VertexBuffer;
+		Ref<Shader> m_Shader;
+		u32 m_TextureID;
+		const u32 IndicesCount = 36;
 		float m_BlurFactor = 0.005f;
 	};
 }

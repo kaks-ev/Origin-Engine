@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	enum class AnimationType
+	enum class OGN_API AnimationType
 	{
 		Sprite       = BIT(0),
 		SpritesSheet = BIT(1),
@@ -27,7 +27,7 @@ namespace origin
 		}
 	}
 
-	class Animation
+	class OGN_API Animation
 	{
 	public:
 		virtual ~Animation() = default;

@@ -8,7 +8,7 @@
 
 namespace origin {
 
-    struct AssetMetadata
+    struct OGN_API AssetMetadata
     {
         AssetType             Type = AssetType::None;
         std::filesystem::path Filepath;

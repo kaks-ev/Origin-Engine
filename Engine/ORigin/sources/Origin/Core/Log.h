@@ -15,7 +15,8 @@
 #include <vulkan/vulkan.h>
 
 namespace origin {
-	class Log
+
+	class OGN_API Log
 	{
 	public:
 		Log();

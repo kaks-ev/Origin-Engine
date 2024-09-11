@@ -7,7 +7,7 @@
 
 namespace origin
 {
-    class Animator
+    class OGN_API Animator
     {
     public:
         Animator() = default;

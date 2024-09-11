@@ -7,7 +7,7 @@
 
 namespace origin {
 
-	class VertexArray
+	class OGN_API VertexArray
 	{
 	public:
 		virtual ~VertexArray() = default;

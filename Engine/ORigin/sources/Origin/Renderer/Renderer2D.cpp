@@ -18,7 +18,7 @@ namespace origin {
 		glm::vec3 Position;
 		glm::vec4 Color;
 		glm::vec2 TexCoord;
-		float TexIndex;
+		f32 TexIndex;
 	};
 
 	struct QuadVertex
@@ -27,7 +27,7 @@ namespace origin {
 		glm::vec4 Color;
 		glm::vec2 TexCoord;
 		glm::vec2 TilingFactor;
-		float TexIndex;
+		f32 TexIndex;
 	};
 
 	struct CircleVertex
@@ -35,8 +35,8 @@ namespace origin {
 		glm::vec3 TransformedPosition;
 		glm::vec3 Position;
 		glm::vec4 Color;
-		float Thickness;
-		float Fade;
+		f32 Thickness;
+		f32 Fade;
 	};
 
 	struct LineVertex
@@ -56,9 +56,9 @@ namespace origin {
 		std::shared_ptr<VertexArray> TextVertexArray;
 		std::shared_ptr<VertexBuffer> TextVertexBuffer;
 		std::shared_ptr<Shader> TextShader;
-		uint32_t FontAtlasTextureIndex = 0;
+		u32 FontAtlasTextureIndex = 0;
 		std::array<std::shared_ptr<Texture2D>, 32> FontAtlasTextureSlots;
-		uint32_t TextIndexCount = 0;
+		u32 TextIndexCount = 0;
 		TextVertex *TextVertexBufferBase = nullptr;
 		TextVertex *TextVertexBufferPtr = nullptr;
 
@@ -69,7 +69,7 @@ namespace origin {
 		std::shared_ptr<VertexBuffer> QuadVertexBuffer;
 		std::shared_ptr<Shader> QuadShader;
 
-		uint32_t QuadIndexCount = 0;
+		u32 QuadIndexCount = 0;
 		QuadVertex *QuadVertexBufferBase = nullptr;
 		QuadVertex *QuadVertexBufferPtr = nullptr;
 		glm::vec4 QuadVertexPositions[4];
@@ -81,26 +81,26 @@ namespace origin {
 		std::shared_ptr<VertexBuffer> CircleVertexBuffer;
 		std::shared_ptr<Shader> CircleShader;
 
-		uint32_t CircleIndexCount = 0;
+		u32 CircleIndexCount = 0;
 		CircleVertex *CircleVertexBufferBase = nullptr;
 		CircleVertex *CircleVertexBufferPtr = nullptr;
 
 		// =============================================
 		// =================== Lines ===================
 		// =============================================
-		static const uint32_t MaxLines = 102400;
-		static const uint32_t MaxLineVertices = MaxLines * 2;
+		static const u32 MaxLines = 102400;
+		static const u32 MaxLineVertices = MaxLines * 2;
 
 		std::shared_ptr<VertexArray> LineVertexArray;
 		std::shared_ptr<VertexBuffer> LineVertexBuffer;
 		std::shared_ptr<Shader> LineShader;
 
-		uint32_t LineVertexCount = 0;
+		u32 LineVertexCount = 0;
 		LineVertex *LineVertexBufferBase = nullptr;
 		LineVertex *LineVertexBufferPtr = nullptr;
 
 		std::array<std::shared_ptr<Texture2D>, 32> TextureSlots;
-		uint32_t TextureSlotIndex = 1; // 0 = white texture
+		u32 TextureSlotIndex = 1; // 0 = white texture
 	};
 
 	static Renderer2DData s_Render2DData;
@@ -128,10 +128,10 @@ namespace origin {
 		s_Render2DData.QuadVertexArray->AddVertexBuffer(s_Render2DData.QuadVertexBuffer);
 		s_Render2DData.QuadVertexBufferBase = new QuadVertex[Renderer::s_RenderData.MaxVertices];
 
-		uint32_t* quadIndices = new uint32_t[Renderer::s_RenderData.MaxQuadIndices];
+		u32* quadIndices = new u32[Renderer::s_RenderData.MaxQuadIndices];
 
-		uint32_t offset = 0;
-		for (uint32_t i = 0; i < Renderer::s_RenderData.MaxQuadIndices; i += 6)
+		u32 offset = 0;
+		for (u32 i = 0; i < Renderer::s_RenderData.MaxQuadIndices; i += 6)
 		{
 			quadIndices[i + 0] = offset + 0;
 			quadIndices[i + 1] = offset + 1;
@@ -260,11 +260,11 @@ namespace origin {
 
 		if (s_Render2DData.TextIndexCount)
 		{
-			uint32_t dataSize = (uint32_t)((uint8_t*)s_Render2DData.TextVertexBufferPtr - (uint8_t*)s_Render2DData.TextVertexBufferBase);
+			u32 dataSize = (u32)((uint8_t*)s_Render2DData.TextVertexBufferPtr - (uint8_t*)s_Render2DData.TextVertexBufferBase);
 			s_Render2DData.TextVertexBuffer->Bind();
 			s_Render2DData.TextVertexBuffer->SetData(s_Render2DData.TextVertexBufferBase, dataSize);
 
-			for (uint32_t i = 0; i < s_Render2DData.FontAtlasTextureIndex; i++)
+			for (u32 i = 0; i < s_Render2DData.FontAtlasTextureIndex; i++)
 			{
 				s_Render2DData.FontAtlasTextureSlots[i]->Bind(i);
 			}
@@ -280,7 +280,7 @@ namespace origin {
 
 		if (s_Render2DData.CircleIndexCount)
 		{
-			uint32_t dataSize = (uint32_t)((uint8_t*)s_Render2DData.CircleVertexBufferPtr - (uint8_t*)s_Render2DData.CircleVertexBufferBase);
+			u32 dataSize = (u32)((uint8_t*)s_Render2DData.CircleVertexBufferPtr - (uint8_t*)s_Render2DData.CircleVertexBufferBase);
 			s_Render2DData.CircleVertexBuffer->Bind();
 			s_Render2DData.CircleVertexBuffer->SetData(s_Render2DData.CircleVertexBufferBase, dataSize);
 
@@ -295,11 +295,11 @@ namespace origin {
 
 		if (s_Render2DData.QuadIndexCount)
 		{
-			uint32_t dataSize = (uint32_t)((uint8_t *)s_Render2DData.QuadVertexBufferPtr - (uint8_t *)s_Render2DData.QuadVertexBufferBase);
+			u32 dataSize = (u32)((uint8_t *)s_Render2DData.QuadVertexBufferPtr - (uint8_t *)s_Render2DData.QuadVertexBufferBase);
 			s_Render2DData.QuadVertexBuffer->Bind();
 			s_Render2DData.QuadVertexBuffer->SetData(s_Render2DData.QuadVertexBufferBase, dataSize);
 
-			for (uint32_t i = 0; i < s_Render2DData.TextureSlotIndex; i++)
+			for (u32 i = 0; i < s_Render2DData.TextureSlotIndex; i++)
 			{
 				s_Render2DData.TextureSlots[i]->Bind(i);
 			}
@@ -315,7 +315,7 @@ namespace origin {
 
 		if (s_Render2DData.LineVertexCount)
 		{
-			uint32_t dataSize = (uint32_t)((uint8_t *)s_Render2DData.LineVertexBufferPtr - (uint8_t *)s_Render2DData.LineVertexBufferBase);
+			u32 dataSize = (u32)((uint8_t *)s_Render2DData.LineVertexBufferPtr - (uint8_t *)s_Render2DData.LineVertexBufferBase);
 			s_Render2DData.LineVertexBuffer->Bind();
 			s_Render2DData.LineVertexBuffer->SetData(s_Render2DData.LineVertexBufferBase, dataSize);
 
@@ -366,7 +366,7 @@ namespace origin {
 		OGN_PROFILER_RENDERING();
 
 		constexpr size_t quadVertexCount = 4;
-		const float textureIndex = 0.0f; // White Texture
+		const f32 textureIndex = 0.0f; // White Texture
 		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 		const glm::vec2& tilingFactor = glm::vec2(1.0f);
 
@@ -399,12 +399,12 @@ namespace origin {
 		if (s_Render2DData.QuadIndexCount >= Renderer::s_RenderData.MaxQuadIndices)
 			NextBatch();
 
-		float textureIndex = 0.0f;
-		for (uint32_t i = 1; i < s_Render2DData.TextureSlotIndex; i++)
+		f32 textureIndex = 0.0f;
+		for (u32 i = 1; i < s_Render2DData.TextureSlotIndex; i++)
 		{
 			if (*s_Render2DData.TextureSlots[i] == *texture)
 			{
-				textureIndex = (float)i;
+				textureIndex = (f32)i;
 				break;
 			}
 		}
@@ -414,7 +414,7 @@ namespace origin {
 			if (s_Render2DData.TextureSlotIndex >= Renderer::s_RenderData.MaxTextureSlots)
 				NextBatch();
 
-			textureIndex = (float)s_Render2DData.TextureSlotIndex;
+			textureIndex = (f32)s_Render2DData.TextureSlotIndex;
 			s_Render2DData.TextureSlots[s_Render2DData.TextureSlotIndex] = texture;
 			s_Render2DData.TextureSlotIndex++;
 		}
@@ -443,12 +443,12 @@ namespace origin {
 		if (s_Render2DData.QuadIndexCount >= Renderer::s_RenderData.MaxQuadIndices)
 			NextBatch();
 
-		float textureIndex = 0.0f;
-		for (uint32_t i = 1; i < s_Render2DData.TextureSlotIndex; i++)
+		f32 textureIndex = 0.0f;
+		for (u32 i = 1; i < s_Render2DData.TextureSlotIndex; i++)
 		{
 			if (*s_Render2DData.TextureSlots[i] == *texture)
 			{
-				textureIndex = (float)i;
+				textureIndex = (f32)i;
 				break;
 			}
 		}
@@ -458,7 +458,7 @@ namespace origin {
 			if (s_Render2DData.TextureSlotIndex >= Renderer::s_RenderData.MaxTextureSlots)
 				NextBatch();
 
-			textureIndex = (float)s_Render2DData.TextureSlotIndex;
+			textureIndex = (f32)s_Render2DData.TextureSlotIndex;
 			s_Render2DData.TextureSlots[s_Render2DData.TextureSlotIndex] = texture;
 			s_Render2DData.TextureSlotIndex++;
 		}
@@ -476,12 +476,12 @@ namespace origin {
 		Renderer::GetStatistics().QuadCount++;
 	}
 
-	void Renderer2D::DrawRotatedQuad(const glm::vec2 &position, const glm::vec2 &size, float rotation, const glm::vec4 &color)
+	void Renderer2D::DrawRotatedQuad(const glm::vec2 &position, const glm::vec2 &size, f32 rotation, const glm::vec4 &color)
 	{
 		DrawRotatedQuad({ position.x, position.y, 0.0f }, size, rotation, color);
 	}
 
-	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, f32 rotation, const glm::vec4& color)
 	{
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 			* glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f })
@@ -490,12 +490,12 @@ namespace origin {
 		DrawQuad(transform, color);
 	}
 
-	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2& tilingFactor, const glm::vec4& tintColor)
+	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, f32 rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2& tilingFactor, const glm::vec4& tintColor)
 	{
 		DrawRotatedQuad({ position.x, position.y, 0.0f }, size, rotation, texture, tilingFactor, tintColor);
 	}
 
-	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2& tilingFactor, const glm::vec4& tintColor)
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, f32 rotation, const std::shared_ptr<Texture2D>& texture, const glm::vec2& tilingFactor, const glm::vec4& tintColor)
 	{
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 			* glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f })
@@ -530,7 +530,7 @@ namespace origin {
 		DrawLine(lineVertices[3], lineVertices[0], color);
 	}
 
-	void Renderer2D::DrawCircle(const glm::mat4& transform, const glm::vec4& color, float thickness, float fade)
+	void Renderer2D::DrawCircle(const glm::mat4& transform, const glm::vec4& color, f32 thickness, f32 fade)
 	{
 		OGN_PROFILER_RENDERING();
 
@@ -548,7 +548,7 @@ namespace origin {
 		Renderer::GetStatistics().CircleCount++;
 	}
 
-	void Renderer2D::DrawCircle(const glm::vec3 &position, const glm::vec2 &scale, const glm::vec4 &color, float thickness, float fade)
+	void Renderer2D::DrawCircle(const glm::vec3 &position, const glm::vec2 &scale, const glm::vec4 &color, f32 thickness, f32 fade)
 	{
 		const glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { scale.x, scale.y, 1.0f });
 		DrawCircle(transform, color, thickness, fade);
@@ -615,12 +615,12 @@ namespace origin {
 			if (s_Render2DData.QuadIndexCount >= Renderer::s_RenderData.MaxQuadIndices)
 				NextBatch();
 
-			float textureIndex = 0.0f;
-			for (uint32_t i = 1; i < s_Render2DData.TextureSlotIndex; i++)
+			f32 textureIndex = 0.0f;
+			for (u32 i = 1; i < s_Render2DData.TextureSlotIndex; i++)
 			{
 				if (*s_Render2DData.TextureSlots[i] == *texture)
 				{
-					textureIndex = (float)i;
+					textureIndex = (f32)i;
 					break;
 				}
 			}
@@ -630,7 +630,7 @@ namespace origin {
 				if (s_Render2DData.TextureSlotIndex >= Renderer::s_RenderData.MaxTextureSlots)
 					NextBatch();
 
-				textureIndex = (float)s_Render2DData.TextureSlotIndex;
+				textureIndex = (f32)s_Render2DData.TextureSlotIndex;
 				s_Render2DData.TextureSlots[s_Render2DData.TextureSlotIndex] = texture;
 				s_Render2DData.TextureSlotIndex++;
 			}
@@ -671,13 +671,13 @@ namespace origin {
 
 		std::shared_ptr<Texture2D> fontAtlas = font->GetAtlasTexture();
 
-		float textureIndex = 0;
-		for (uint32_t i = 0; i < s_Render2DData.FontAtlasTextureIndex; i++)
+		f32 textureIndex = 0;
+		for (u32 i = 0; i < s_Render2DData.FontAtlasTextureIndex; i++)
 		{
 			if (*s_Render2DData.FontAtlasTextureSlots[i] == *fontAtlas)
 			{
 				s_Render2DData.FontAtlasTextureSlots[i] = fontAtlas;
-				textureIndex = (float)i;
+				textureIndex = (f32)i;
 				break;
 			}
 		}
@@ -687,7 +687,7 @@ namespace origin {
 			if (s_Render2DData.FontAtlasTextureIndex >= Renderer::s_RenderData.MaxTextureSlots)
 				NextBatch();
 
-			textureIndex = (float)s_Render2DData.FontAtlasTextureIndex;
+			textureIndex = (f32)s_Render2DData.FontAtlasTextureIndex;
 			s_Render2DData.FontAtlasTextureSlots[s_Render2DData.FontAtlasTextureIndex] = fontAtlas;
 			s_Render2DData.FontAtlasTextureIndex++;
 		}
@@ -697,7 +697,7 @@ namespace origin {
 		double maxX = 0.0; // to track the maximum width
 		double minY = 0.0; // to track the minimum y position (since y dreases with line breaks)
 		double fsScale = 1.0 / (metrics.ascenderY - metrics.descenderY);
-		const float spaceGlyphAdvance = fontGeometry.getGlyph(' ')->getAdvance();
+		const f32 spaceGlyphAdvance = fontGeometry.getGlyph(' ')->getAdvance();
 
 		for (size_t i = 0; i < string.size(); i++)
 		{
@@ -718,13 +718,13 @@ namespace origin {
 
 			if (character == ' ')
 			{
-				float advance = spaceGlyphAdvance;
+				f32 advance = spaceGlyphAdvance;
 				if (i < string.size() - 1)
 				{
 					char nextCharacter = string[i + 1];
 					double dAdvance;
 					fontGeometry.getAdvance(dAdvance, character, nextCharacter);
-					advance = (float)advance;
+					advance = (f32)advance;
 				}
 
 				x += fsScale * advance + textParams.Kerning;
@@ -745,20 +745,20 @@ namespace origin {
 
 			double atlasLeft, atlasBottom, atlasRight, atlasTop;
 			glyph->getQuadAtlasBounds(atlasLeft, atlasBottom, atlasRight, atlasTop);
-			glm::vec2 texCoordMin(float(atlasLeft), (float)atlasBottom);
-			glm::vec2 texCoordMax(float(atlasRight), (float) atlasTop);
+			glm::vec2 texCoordMin(f32(atlasLeft), (f32)atlasBottom);
+			glm::vec2 texCoordMax(f32(atlasRight), (f32) atlasTop);
 
 			double planeLeft, planeBottom, planeRight, planeTop;
 			glyph->getQuadPlaneBounds(planeLeft, planeBottom, planeRight, planeTop);
-			glm::vec2 quadMin((float)planeLeft, (float)planeBottom);
-			glm::vec2 quadMax((float)planeRight, (float)planeTop);
+			glm::vec2 quadMin((f32)planeLeft, (f32)planeBottom);
+			glm::vec2 quadMax((f32)planeRight, (f32)planeTop);
 
 			quadMin *= fsScale, quadMax *= fsScale;
 			quadMin += glm::vec2(x, y);
 			quadMax += glm::vec2(x, y);
 
-			float texelWidth = 1.0f / s_Render2DData.FontAtlasTextureSlots[(int)textureIndex]->GetWidth();
-			float texelHeight = 1.0f / s_Render2DData.FontAtlasTextureSlots[(int)textureIndex]->GetHeight();
+			f32 texelWidth = 1.0f / s_Render2DData.FontAtlasTextureSlots[(int)textureIndex]->GetWidth();
+			f32 texelHeight = 1.0f / s_Render2DData.FontAtlasTextureSlots[(int)textureIndex]->GetHeight();
 
 			texCoordMin *= glm::vec2(texelWidth, texelHeight);
 			texCoordMax *= glm::vec2(texelWidth, texelHeight);
@@ -808,7 +808,7 @@ namespace origin {
 		{
 			double totalWidth = maxX;
 			double totalHeight = std::abs(minY) + fsScale * metrics.lineHeight;
-			*size = { static_cast<float>(maxX), static_cast<float>(totalHeight) };
+			*size = { static_cast<f32>(maxX), static_cast<f32>(totalHeight) };
 		}
 	}
 

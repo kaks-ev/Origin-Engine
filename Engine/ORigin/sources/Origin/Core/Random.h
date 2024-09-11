@@ -7,7 +7,7 @@
 
 namespace origin {
 
-	class Random
+	class OGN_API Random
 	{
 	public:
 		static void Init()

@@ -11,7 +11,7 @@ namespace origin
 
 	namespace Mouse 
 	{
-		enum : MouseCode
+		enum OGN_API : MouseCode
 		{
 			// From glfw3.h
 			Button0 = 0,

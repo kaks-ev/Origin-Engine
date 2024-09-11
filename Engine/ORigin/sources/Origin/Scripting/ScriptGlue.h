@@ -5,7 +5,7 @@
 
 namespace origin
 {
-	class ScriptGlue
+	class OGN_API ScriptGlue
 	{
 	public:
 		static void RegisterComponents();

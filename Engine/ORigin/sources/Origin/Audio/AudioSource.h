@@ -7,8 +7,8 @@
 
 namespace origin
 {
-    class Asset;
-    class AudioSource : public Asset
+    class OGN_API Asset;
+    class OGN_API AudioSource : public Asset
     {
     public:
         AudioSource() = default;

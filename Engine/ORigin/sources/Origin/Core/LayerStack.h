@@ -7,7 +7,7 @@
 
 namespace origin {
 
-    class LayerStack
+    class OGN_API LayerStack
     {
     private:
         std::vector<Layer*> m_Layers;

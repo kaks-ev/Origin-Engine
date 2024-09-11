@@ -10,17 +10,17 @@
 
 namespace origin {
 
-	struct FontData
+	struct OGN_API FontData
 	{
 		std::vector<msdf_atlas::GlyphGeometry> Glyphs;
 		msdf_atlas::FontGeometry FontGeometry;
 		TextureSpecification TexSpec;
 		Buffer BufferData;
 		std::string Filepath;
-		int Width = 0, Height = 0;
+		i32 Width = 0, Height = 0;
 	};
 
-	class Font : public Asset
+	class OGN_API Font : public Asset
 	{
 	public:
 

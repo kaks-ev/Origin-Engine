@@ -8,7 +8,7 @@
 
 namespace origin
 {
-	class DX11RendererAPI : public RendererAPI
+	class OGN_API DX11RendererAPI : public RendererAPI
 	{
 	private:
 		bool m_DrawLineMode = false;

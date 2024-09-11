@@ -7,7 +7,7 @@
 
 namespace origin
 {
-    struct AABB
+    struct OGN_API AABB
     {
         glm::vec3 Min = glm::vec3(0.0f);
         glm::vec3 Max = glm::vec3(0.0f);

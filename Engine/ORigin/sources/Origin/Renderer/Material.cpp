@@ -12,6 +12,47 @@ namespace origin {
 #define ALBEDO_MAP		"u_AlbedoMap"
 #define SPECULAR_MAP	"u_SpecularMap"
 
+	namespace Utils
+	{
+		void LoadMatTextures(std::unordered_map<aiTextureType, std::shared_ptr<Texture2D>> *tex, const std::string &modelFilepath, aiMaterial *mat, aiTextureType type)
+		{
+			static std::vector<std::shared_ptr<Texture2D>> loadedTextures;
+			std::unordered_map<aiTextureType, std::shared_ptr<Texture2D>> textures;
+
+			for (uint32_t i = 0; i < mat->GetTextureCount(type); i++)
+			{
+				OGN_PROFILER_SCOPE("Material::LoadTextures TextureCount");
+
+				aiString str;
+
+				mat->GetTexture(type, i, &str);
+				bool skip = false;
+				for (uint32_t j = 0; j < loadedTextures.size(); j++)
+				{
+					if (std::strcmp(loadedTextures[j]->GetName().c_str(), str.C_Str()) == 0)
+					{
+						tex->insert({ type, loadedTextures[j] });
+						skip = true;
+						break;
+					}
+				}
+
+				if (!skip)
+				{
+					OGN_PROFILER_SCOPE("Material::LoadTextures TextureCount");
+
+					auto textureDirectory = modelFilepath.substr(0, modelFilepath.find_last_of('/'));
+					std::string textureName = std::string(str.C_Str());
+
+					std::shared_ptr<Texture2D> newTexture = Texture2D::Create(textureDirectory + "/" + textureName);
+					tex->insert({ type, newTexture });
+					loadedTextures.push_back(newTexture);
+				}
+			}
+			loadedTextures.clear();
+		}
+	}
+
 	Material::Material(const std::string &name)
 		: m_Name(name)
 	{

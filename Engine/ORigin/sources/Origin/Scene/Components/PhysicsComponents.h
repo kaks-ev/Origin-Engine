@@ -29,7 +29,7 @@ namespace origin
         return glm::quat(q.GetW(), q.GetX(), q.GetY(), q.GetZ());
     }
 
-    class RigidbodyComponent
+    class OGN_API RigidbodyComponent
     {
     public:
 
@@ -45,9 +45,9 @@ namespace origin
         bool RotateX = true, RotateY = true, RotateZ = true;
         bool MoveX = true, MoveY = true, MoveZ = true;
         bool IsStatic = false;
-        float Mass = 1.0f;
+        f32 Mass = 1.0f;
         bool AllowSleeping = true;
-        float GravityFactor = 1.0f;
+        f32 GravityFactor = 1.0f;
         glm::vec3 CenterMass = { 0.0f, 0.0f, 0.0f };
         glm::vec3 Offset = { 0.0f, 0.0f, 0.0f };
 
@@ -63,25 +63,25 @@ namespace origin
         void DeactivateBody();
         void DestroyBody();
         bool IsActive();
-        void MoveKinematic(const glm::vec3 &targetPosition, const glm::vec3 &targetRotation, float deltaTime);
+        void MoveKinematic(const glm::vec3 &targetPosition, const glm::vec3 &targetRotation, f32 deltaTime);
         void AddImpulse(const glm::vec3 &impulse);
         void AddLinearVelocity(const glm::vec3 &velocity);
-        void SetRestitution(float value);
+        void SetRestitution(f32 value);
         void SetPosition(const glm::vec3 &position, bool activate);
         void SetEulerAngleRotation(const glm::vec3 &rotation, bool activate);
         void SetRotation(const glm::quat &rotation, bool activate);
         void SetLinearVelocity(const glm::vec3 &vel);
-        void SetFriction(float value);
-        void SetGravityFactor(float value);
-        void SetMaxLinearVelocity(float max);
-        void SetMaxAngularVelocity(float max);
-        void SetMass(float mass);
+        void SetFriction(f32 value);
+        void SetGravityFactor(f32 value);
+        void SetMaxLinearVelocity(f32 max);
+        void SetMaxAngularVelocity(f32 max);
+        void SetMass(f32 mass);
         void SetOffset(const glm::vec3 &offset);
         void SetCenterMass(const glm::vec3 &center);
         void SetSleep(bool sleep);
-        float GetRestitution();
-        float GetFriction();
-        float GetGravityFactor();
+        f32 GetRestitution();
+        f32 GetFriction();
+        f32 GetGravityFactor();
 
         glm::vec3 GetPosition();
         glm::vec3 GetEulerAngles();
@@ -90,17 +90,17 @@ namespace origin
         glm::vec3 GetLinearVelocity();
     };
 
-    class PhysicsCollider
+    class OGN_API PhysicsCollider
     {
     public:
-        float Friction = 0.6f;
-        float Restitution = 0.6f;
-        float Density = 1.0f;
+        f32 Friction = 0.6f;
+        f32 Restitution = 0.6f;
+        f32 Density = 1.0f;
 
         void *Shape = nullptr;
     };
 
-    class BoxColliderComponent : public PhysicsCollider
+    class OGN_API BoxColliderComponent : public PhysicsCollider
     {
     public:
         glm::vec3 Scale = { 1.0f, 1.0f, 1.0f };
@@ -109,20 +109,20 @@ namespace origin
         BoxColliderComponent(const BoxColliderComponent &) = default;
     };
 
-    class SphereColliderComponent : public PhysicsCollider
+    class OGN_API SphereColliderComponent : public PhysicsCollider
     {
     public:
-        float Radius = 0.5f;
+        f32 Radius = 0.5f;
 
         SphereColliderComponent() = default;
         SphereColliderComponent(const SphereColliderComponent &) = default;
     };
 
-    class CapsuleColliderComponent : public PhysicsCollider
+    class OGN_API CapsuleColliderComponent : public PhysicsCollider
     {
     public:
-        float HalfHeight = 1.0f;
-        float Radius = 0.5f;
+        f32 HalfHeight = 1.0f;
+        f32 Radius = 0.5f;
 
         CapsuleColliderComponent() = default;
         CapsuleColliderComponent(const CapsuleColliderComponent &) = default;

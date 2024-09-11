@@ -7,7 +7,7 @@
 
 namespace origin {
 
-	enum class EventType
+	enum class OGN_API EventType
 	{
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, WindowDrop,
@@ -17,7 +17,7 @@ namespace origin {
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
-	enum EventCategory
+	enum OGN_API EventCategory
 	{
 		EventCategoryApplication	= BIT(0),
 		EventCategoryInput				= BIT(1),
@@ -33,7 +33,7 @@ namespace origin {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class Event
+	class OGN_API Event
 	{
 	public:
 		virtual ~Event() = default;
@@ -51,7 +51,7 @@ namespace origin {
 		}
 	};
 
-	class EventDispatcher
+	class OGN_API EventDispatcher
 	{
 	public:
 		EventDispatcher(Event& event)

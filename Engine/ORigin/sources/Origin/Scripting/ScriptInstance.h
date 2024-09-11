@@ -14,11 +14,11 @@ extern "C" {
 
 namespace origin
 {
-    class Entity;
-    class ScriptClass;
+    class OGN_API Entity;
+    class OGN_API ScriptClass;
 
     // script field + data storage
-    struct ScriptFieldInstance
+    struct OGN_API ScriptFieldInstance
     {
         ScriptField Field;
         ScriptFieldInstance()
@@ -47,7 +47,7 @@ namespace origin
         friend class ScriptInstance;
     };
 
-    class ScriptInstance
+    class OGN_API ScriptInstance
     {
     public:
         ScriptInstance(std::shared_ptr<ScriptClass> scriptClass, Entity entity);

@@ -15,8 +15,8 @@
 
 namespace origin {
 
-	class Scene;
-	class PhysicsEngine
+	class OGN_API Scene;
+	class OGN_API PhysicsEngine
 	{
 	public:
 		static void Init();
@@ -50,7 +50,7 @@ namespace origin {
         static constexpr uint32_t NUM_LAYERS(2);
     }
 
-    class JoltObjectLayerPairFilterImpl : public JPH::ObjectLayerPairFilter
+    class OGN_API JoltObjectLayerPairFilterImpl : public JPH::ObjectLayerPairFilter
     {
     public:
         virtual bool ShouldCollide(JPH::ObjectLayer inObject1, JPH::ObjectLayer inObject2) const override
@@ -68,7 +68,7 @@ namespace origin {
         }
     };
 
-    class JoltBroadPhaseLayerInterfaceImpl final : public JPH::BroadPhaseLayerInterface
+    class OGN_API JoltBroadPhaseLayerInterfaceImpl final : public JPH::BroadPhaseLayerInterface
     {
     public:
         JoltBroadPhaseLayerInterfaceImpl()
@@ -92,7 +92,7 @@ namespace origin {
         JPH::BroadPhaseLayer m_ObjectToBP[Layers::NUM_LAYERS];
     };
 
-    class JoltObjectVsBroadPhaseLayerFilterImpl : public JPH::ObjectVsBroadPhaseLayerFilter
+    class OGN_API JoltObjectVsBroadPhaseLayerFilterImpl : public JPH::ObjectVsBroadPhaseLayerFilter
     {
     public:
         virtual bool ShouldCollide(JPH::ObjectLayer inLayer1, JPH::BroadPhaseLayer inLayer2) const override

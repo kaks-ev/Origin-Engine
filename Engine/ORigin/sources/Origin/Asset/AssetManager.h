@@ -8,7 +8,7 @@
 
 namespace origin {
 
-    class AssetManager
+    class OGN_API AssetManager
     {
     public:
 

@@ -11,7 +11,7 @@
 
 namespace origin
 {
-    class DestoryEntityCommand : public Command
+    class OGN_API DestoryEntityCommand : public Command
     {
     public:
         DestoryEntityCommand(std::shared_ptr<Scene> &scene, Entity selectedEntity)

@@ -11,7 +11,7 @@ namespace origin {
 
     using AssetRegistry = std::map<AssetHandle, AssetMetadata>;
 
-    class EditorAssetManager : public AssetManagerBase
+    class OGN_API EditorAssetManager : public AssetManagerBase
     {
     public:
         std::shared_ptr<Asset> GetAsset(AssetHandle handle) override;

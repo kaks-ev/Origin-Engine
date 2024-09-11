@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class MaterialLibrary
+	class OGN_API MaterialLibrary
 	{
 	public:
 		MaterialLibrary() = default;

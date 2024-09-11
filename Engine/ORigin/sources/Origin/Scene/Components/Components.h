@@ -35,16 +35,16 @@
 
 namespace origin
 {
-    class Lighting;
-    class AudioSource;
-    class SpriteAnimation;
-    class ScriptableEntity;
-    class RigidbodyComponent;
-    class BoxColliderComponent;
-    class SphereColliderComponent;
-    class CapsuleColliderComponent;
+    class OGN_API Lighting;
+    class OGN_API AudioSource;
+    class OGN_API SpriteAnimation;
+    class OGN_API ScriptableEntity;
+    class OGN_API RigidbodyComponent;
+    class OGN_API BoxColliderComponent;
+    class OGN_API SphereColliderComponent;
+    class OGN_API CapsuleColliderComponent;
 
-    enum class EntityType
+    enum class OGN_API EntityType
     {
         Entity   = BIT(1),
         Prefabs  = BIT(2),
@@ -88,7 +88,7 @@ namespace origin
         }
     }
 
-    class IDComponent
+    class OGN_API IDComponent
     {
     public:
         UUID ID;
@@ -100,18 +100,18 @@ namespace origin
         IDComponent(UUID id, UUID parent = UUID(0)) : ID(id), Parent(parent) { }
     };
 
-    class TagComponent
+    class OGN_API TagComponent
     {
     public:
         std::string Tag;
         TagComponent() = default;
-        TagComponent(const TagComponent&) = default;
-        TagComponent(const std::string& tag) : Tag(tag)
+        TagComponent(const TagComponent &) = default;
+        TagComponent(const std::string &tag) : Tag(tag)
         {
         }
     };
 
-    class SpriteAnimationComponent
+    class OGN_API SpriteAnimationComponent
     {
     public:
         std::shared_ptr<AnimationState<SpriteAnimation>> State;
@@ -121,41 +121,41 @@ namespace origin
             State = std::make_shared<AnimationState<SpriteAnimation>>();
         }
 
-        SpriteAnimationComponent(const SpriteAnimationComponent&) = default;
+        SpriteAnimationComponent(const SpriteAnimationComponent &) = default;
         static const AnimationType Type = AnimationType::Sprite;
     };
 
-    class AudioListenerComponent
+    class OGN_API AudioListenerComponent
     {
     public:
         AudioListener Listener;
-        uint32_t Index = 0;
+        u32 Index = 0;
         bool Enable = true;
         AudioListenerComponent() = default;
-        AudioListenerComponent(const AudioListenerComponent&) = default;
+        AudioListenerComponent(const AudioListenerComponent &) = default;
     };
-    
-    class AudioComponent
+
+    class OGN_API AudioComponent
     {
     public:
         AssetHandle Audio = UUID(0);
         std::string Name;
-        float Volume = 1.0f;
-        float Panning = 0.0f;
-        float Pitch = 1.0f;
-        float MinDistance = 10.0f;
-        float MaxDistance = 20.0f;
+        f32 Volume = 1.0f;
+        f32 Panning = 0.0f;
+        f32 Pitch = 1.0f;
+        f32 MinDistance = 10.0f;
+        f32 MaxDistance = 20.0f;
         bool Spatializing = false;
         bool Looping = false;
         bool PlayAtStart = false;
         bool Overlapping = false;
-        int OverlapCount = 10;
+        i32 OverlapCount = 10;
 
         AudioComponent() = default;
         AudioComponent(const AudioComponent &) = default;
     };
 
-    class ParticleComponent
+    class OGN_API ParticleComponent
     {
     public:
         ParticleSystem Particle;
@@ -164,24 +164,24 @@ namespace origin
         glm::vec3 VelocityVariation = glm::vec3(1.0f);
         glm::vec3 Rotation = glm::vec3(1.0f);
 
-        glm::vec4 ColorBegin = {254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f};
-        glm::vec4 ColorEnd = {254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f};
-        uint32_t PoolIndex = 1000;
+        glm::vec4 ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
+        glm::vec4 ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
+        u32 PoolIndex = 1000;
 
-        float SizeBegin = 0.5f;
-        float SizeEnd = 0.0f;
-        float SizeVariation = 0.3f;
-        float ZAxis = 0.0f;
-        float LifeTime = 1.0f;
+        f32 SizeBegin = 0.5f;
+        f32 SizeEnd = 0.0f;
+        f32 SizeVariation = 0.3f;
+        f32 ZAxis = 0.0f;
+        f32 LifeTime = 1.0f;
 
         ParticleComponent() = default;
         ParticleComponent(const ParticleComponent &) = default;
     };
 
-    class StaticMeshComponent
+    class OGN_API StaticMeshComponent
     {
     public:
-        enum class Type
+        enum class OGN_API Type
         {
             Default = 0,
             Cube,
@@ -194,26 +194,26 @@ namespace origin
         AssetHandle HMaterial = UUID(0);
         AssetHandle HMesh = UUID(0);
         Type mType = Type::Default;
-        
+
         StaticMeshComponent() = default;
-        StaticMeshComponent(const StaticMeshComponent&) = default;
+        StaticMeshComponent(const StaticMeshComponent &) = default;
     };
 
-    class MeshComponent
+    class OGN_API MeshComponent
     {
     public:
         std::string Name;
         std::shared_ptr<MeshData> Data;
         AssetHandle HMaterial = UUID(0);
         AssetHandle HMesh = UUID(0);
-        float PlaybackSpeed = 1.0f;
+        f32 PlaybackSpeed = 1.0f;
         Animator AAnimator;
 
         MeshComponent() = default;
         MeshComponent(const MeshComponent &) = default;
     };
 
-    class MeshRendererComponent
+    class OGN_API MeshRendererComponent
     {
     public:
         std::shared_ptr<VertexArray> Va;
@@ -223,7 +223,7 @@ namespace origin
         MeshRendererComponent(const MeshRendererComponent &) = default;
     };
 
-    class TextComponent
+    class OGN_API TextComponent
     {
     public:
         AssetHandle FontHandle = UUID(0);
@@ -232,15 +232,15 @@ namespace origin
         glm::vec2 Size = { 0.0f, 0.0f };
         glm::vec3 Position = { 0.0f, 0.0f, 0.0f };
 
-        float Kerning = 0.0f;
-        float LineSpacing = 0.0f;
+        f32 Kerning = 0.0f;
+        f32 LineSpacing = 0.0f;
         bool ScreenSpace = false;
 
         TextComponent() = default;
         TextComponent(const TextComponent &) = default;
     };
 
-    class TransformComponent
+    class OGN_API TransformComponent
     {
     public:
         glm::vec3 WorldTranslation = glm::vec3(0.0f);
@@ -253,9 +253,9 @@ namespace origin
         bool Visible = true;
 
         TransformComponent() = default;
-        TransformComponent(const TransformComponent&) = default;
+        TransformComponent(const TransformComponent &) = default;
 
-        TransformComponent(const glm::vec3& translation)
+        TransformComponent(const glm::vec3 &translation)
             : Translation(translation)
         {
         }
@@ -334,7 +334,7 @@ namespace origin
         }
     };
 
-    class SpriteRenderer2DComponent
+    class OGN_API SpriteRenderer2DComponent
     {
     public:
         AssetHandle Texture = UUID(0);
@@ -348,61 +348,63 @@ namespace origin
         bool FlipY = false;
 
         SpriteRenderer2DComponent() = default;
-        SpriteRenderer2DComponent(const SpriteRenderer2DComponent&) = default;
-        SpriteRenderer2DComponent(float r, float g, float b, float a)
-            : Color(r, g, b, a){}
+        SpriteRenderer2DComponent(const SpriteRenderer2DComponent &) = default;
+        SpriteRenderer2DComponent(f32 r, f32 g, f32 b, f32 a)
+            : Color(r, g, b, a)
+        {
+        }
     };
-    
-    class LightComponent
+
+    class OGN_API LightComponent
     {
     public:
         std::shared_ptr<Lighting> Light;
         LightComponent() = default;
-        LightComponent(const LightComponent&) = default;
+        LightComponent(const LightComponent &) = default;
     };
 
-    class CircleRendererComponent
+    class OGN_API CircleRendererComponent
     {
     public:
         glm::vec4 Color = glm::vec4(1.0f);
-        float Thickness = 1.0f;
-        float Fade = 0.005f;
+        f32 Thickness = 1.0f;
+        f32 Fade = 0.005f;
 
         CircleRendererComponent() = default;
-        CircleRendererComponent(const CircleRendererComponent&) = default;
+        CircleRendererComponent(const CircleRendererComponent &) = default;
     };
 
-    class CameraComponent
+    class OGN_API CameraComponent
     {
     public:
         SceneCamera Camera;
 
         bool Primary = true;
         CameraComponent() = default;
-        CameraComponent(const CameraComponent&) = default;
+        CameraComponent(const CameraComponent &) = default;
     };
 
-    class ScriptComponent
+    class OGN_API ScriptComponent
     {
     public:
         std::string ClassName = "None";
         ScriptComponent() = default;
-        ScriptComponent(const ScriptComponent&) = default;
+        ScriptComponent(const ScriptComponent &) = default;
     };
 
-    class NativeScriptComponent
+    class OGN_API NativeScriptComponent
     {
     public:
-        ScriptableEntity* Instance;
-        ScriptableEntity* (*InstantiateScript)();
+        ScriptableEntity *Instance;
+        ScriptableEntity *(*InstantiateScript)();
 
-        void (*DestroyScript)(NativeScriptComponent* nsc);
+        void (*DestroyScript)(NativeScriptComponent *nsc);
 
         template <typename T>
         void Bind()
         {
-            InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
-            DestroyScript = [](NativeScriptComponent* nsc)
+            InstantiateScript = []() { return static_cast<ScriptableEntity *>(new T()); };
+            DestroyScript = [](NativeScriptComponent *nsc)
             {
                 delete nsc->Instance;
                 nsc->Instance = nullptr;
@@ -410,79 +412,79 @@ namespace origin
         }
     };
 
-    class Rigidbody2DComponent
+    class OGN_API Rigidbody2DComponent
     {
     public:
-        void* RuntimeBody = nullptr;
+        void *RuntimeBody = nullptr;
 
-        enum class BodyType { Static = 0, Dynamic, Kinematic };
+        enum class OGN_API BodyType { Static = 0, Dynamic, Kinematic };
         BodyType Type = BodyType::Static;
 
         glm::vec2 LinearVelocity = glm::vec2(0.0f);
-        float  AngularVelocity = 0.0f;
+        f32  AngularVelocity = 0.0f;
         glm::vec2 MassCenter = glm::vec2(0.0f);
 
-        float Mass              = 1.0f;
-        float LinearDamping     = 0.0f;
-        float AngularDamping    = 0.01f;
-        float RotationalInertia = 0.0f;
-        float GravityScale      = 1.0f;
-        bool FixedRotation      = false;
-        bool EnableSleep        = true;
-        bool IsAwake            = true;
-        bool IsBullet           = true;
-        bool IsEnabled          = true;
+        f32 Mass = 1.0f;
+        f32 LinearDamping = 0.0f;
+        f32 AngularDamping = 0.01f;
+        f32 RotationalInertia = 0.0f;
+        f32 GravityScale = 1.0f;
+        bool FixedRotation = false;
+        bool EnableSleep = true;
+        bool IsAwake = true;
+        bool IsBullet = true;
+        bool IsEnabled = true;
 
         b2BodyId BodyId;
 
         std::string ContactWith;
 
         Rigidbody2DComponent() = default;
-        Rigidbody2DComponent(const Rigidbody2DComponent&) = default;
+        Rigidbody2DComponent(const Rigidbody2DComponent &) = default;
     };
 
-    class BoxCollider2DComponent
+    class OGN_API BoxCollider2DComponent
     {
     public:
-        glm::vec2 Offset = {0.0f, 0.0f};
-        glm::vec2 Size = {0.5f, 0.5f};
+        glm::vec2 Offset = { 0.0f, 0.0f };
+        glm::vec2 Size = { 0.5f, 0.5f };
         glm::vec2 CurrentSize = { 0.0f, 0.0f };
 
-        float Density     = 1.0f;
-        float Friction    = 0.5f;
-        float Restitution = 0.0f;
-        bool IsSensor     = false;
+        f32 Density = 1.0f;
+        f32 Friction = 0.5f;
+        f32 Restitution = 0.0f;
+        bool IsSensor = false;
 
         // All fixtures with the same group index always collide (positive index)
         // or never collide(negative index)
-        int Group = 1;
+        i32 Group = 1;
         b2ShapeId ShapeId;
 
         BoxCollider2DComponent() = default;
-        BoxCollider2DComponent(const BoxCollider2DComponent&) = default;
+        BoxCollider2DComponent(const BoxCollider2DComponent &) = default;
     };
 
-    class CircleCollider2DComponent
+    class OGN_API CircleCollider2DComponent
     {
     public:
 
-        glm::vec2 Offset = {0.0f, 0.0f};
-        float Radius     = 0.5f;
-        float Density     = 1.0f;
-        float Friction    = 0.5f;
-        float Restitution = 0.0f;
-        bool IsSensor     = false;
+        glm::vec2 Offset = { 0.0f, 0.0f };
+        f32 Radius = 0.5f;
+        f32 Density = 1.0f;
+        f32 Friction = 0.5f;
+        f32 Restitution = 0.0f;
+        bool IsSensor = false;
 
         // All fixtures with the same group index always collide(positive index)
         // or never collide(negative index)
-        int Group = 1;
+        i32 Group = 1;
         b2ShapeId ShapeId;
 
         CircleCollider2DComponent() = default;
-        CircleCollider2DComponent(const CircleCollider2DComponent&) = default;
+        CircleCollider2DComponent(const CircleCollider2DComponent &) = default;
     };
 
-    class RevoluteJoint2DComponent
+    class OGN_API RevoluteJoint2DComponent
     {
     public:
         glm::vec2 AnchorPoint = glm::vec2(0.0f);
@@ -490,27 +492,27 @@ namespace origin
 
         // Angles in degrees 
         // (it is converted to radians when creating component)
-        bool EnableLimit     = false;
-        bool EnableMotor     = true;
-        bool EnableSpring    = false;
+        bool EnableLimit = false;
+        bool EnableMotor = true;
+        bool EnableSpring = false;
         bool CollideConnected = false;
-        float MaxMotorTorque = 100.0f;
-        float MotorSpeed     = 0.0f;
-        float SpringDampingRatio  = 1.0f;
-        float LowerAngle     = 0.0f;
-        float UpperAngle     = 0.0f;
+        f32 MaxMotorTorque = 100.0f;
+        f32 MotorSpeed = 0.0f;
+        f32 SpringDampingRatio = 1.0f;
+        f32 LowerAngle = 0.0f;
+        f32 UpperAngle = 0.0f;
 
         UUID ConnectedBodyID = 0;
         b2JointId JointId;
 
         RevoluteJoint2DComponent() = default;
-        RevoluteJoint2DComponent(const RevoluteJoint2DComponent&) = default;
+        RevoluteJoint2DComponent(const RevoluteJoint2DComponent &) = default;
     };
 
     struct BaseUIData
     {
         virtual ~BaseUIData() = default;
-        enum class Anchor
+        enum class OGN_API Anchor
         {
             Center,
             Left, Right,
@@ -542,7 +544,7 @@ namespace origin
         }
     };
 
-    class UIComponent
+    class OGN_API UIComponent
     {
     public:
         UIComponent() = default;
@@ -565,7 +567,7 @@ namespace origin
             return nullptr;
         }
 
-        bool RenameComponent(int index, const std::string &newName)
+        bool RenameComponent(i32 index, const std::string &newName)
         {
             if (newName.empty())
                 return false;
@@ -590,13 +592,13 @@ namespace origin
             return true;
         }
 
-        void RemoveComponent(int index)
+        void RemoveComponent(i32 index)
         {
             Components.erase(Components.begin() + index);
         }
 
         std::vector<std::shared_ptr<BaseUIData>> Components;
-        std::unordered_map<std::string, int> ComponentCounters;
+        std::unordered_map<std::string, i32> ComponentCounters;
         std::shared_ptr<Framebuffer> OFramebuffer;
 
     private:
@@ -618,7 +620,7 @@ namespace origin
                 return name;
 
             // generate a unique key if the name already exists
-            int counter = 1;
+            i32 counter = 1;
             std::string uniqueKey;
             bool unique = false;
 
@@ -668,26 +670,26 @@ namespace origin
     {
     };
 
-    using AllComponents = ComponentGroup<
-        TransformComponent, 
+    using AllComponents = ComponentGroup <
+        TransformComponent,
         CameraComponent,
-        UIComponent, 
-        SpriteAnimationComponent, 
-        AudioComponent, 
-        AudioListenerComponent, 
+        UIComponent,
+        SpriteAnimationComponent,
+        AudioComponent,
+        AudioListenerComponent,
         LightComponent,
-        SpriteRenderer2DComponent, 
-        StaticMeshComponent, 
-        MeshComponent, 
+        SpriteRenderer2DComponent,
+        StaticMeshComponent,
+        MeshComponent,
         MeshRendererComponent,
         TextComponent,
-        CircleRendererComponent, 
-        ParticleComponent, 
-        ScriptComponent, 
+        CircleRendererComponent,
+        ParticleComponent,
+        ScriptComponent,
         NativeScriptComponent,
-        Rigidbody2DComponent, 
-        BoxCollider2DComponent, 
-        CircleCollider2DComponent, 
+        Rigidbody2DComponent,
+        BoxCollider2DComponent,
+        CircleCollider2DComponent,
         RevoluteJoint2DComponent,
         RigidbodyComponent,
         BoxColliderComponent,

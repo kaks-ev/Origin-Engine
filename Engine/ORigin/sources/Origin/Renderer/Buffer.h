@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	enum class ShaderDataType
+	enum class OGN_API ShaderDataType
 	{
 		None = 0,
 		Int, Int2, Int3, Int4,
@@ -16,7 +16,7 @@ namespace origin
 		Boolean
 	};
 
-	static uint32_t ShaderDataTypeSize(ShaderDataType type)
+	OGN_API u32 ShaderDataTypeSize(ShaderDataType type)
 	{
 		switch (type)
 		{
@@ -38,12 +38,12 @@ namespace origin
 		return 0;
 	}
 
-	struct BufferElement
+	struct OGN_API BufferElement
 	{
 		std::string Name;
 		ShaderDataType Type = ShaderDataType::None;
-		uint32_t Size = 0;
-		uint32_t Offset = 0;
+		u32 Size = 0;
+		u32 Offset = 0;
 		bool Normalized = false;
 
 		BufferElement()
@@ -78,7 +78,7 @@ namespace origin
 		}
 	};
 
-	class BufferLayout
+	class OGN_API BufferLayout
 	{
 	public:
 		BufferLayout() = default;
@@ -89,7 +89,7 @@ namespace origin
 			CalculateOffsetAndStride();
 		}
 
-		uint32_t GetStride() const { return m_Stride; }
+		u32 GetStride() const { return m_Stride; }
 		const std::vector<BufferElement>& GetElements() { return m_Elements; }
 
 		std::vector<BufferElement>::iterator begin() { return m_Elements.begin(); }
@@ -98,7 +98,7 @@ namespace origin
 	private:
 		void CalculateOffsetAndStride()
 		{
-			uint32_t offset = 0;
+			u32 offset = 0;
 			m_Stride = 0;
 
 			for (auto& element : m_Elements)
@@ -110,36 +110,36 @@ namespace origin
 		}
 
 		std::vector<BufferElement> m_Elements;
-		uint32_t m_Stride = 0;
+		u32 m_Stride = 0;
 	};
 
-	class VertexBuffer
+	class OGN_API VertexBuffer
 	{
 	public:
 		virtual ~VertexBuffer() { };
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
-		virtual void SetData(const void* data, uint32_t size, uint32_t offset = 0) = 0;
+		virtual void SetData(const void* data, u32 size, u32 offset = 0) = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 		virtual const BufferLayout& GetLayout() const = 0;
 
-		static std::shared_ptr<VertexBuffer> Create(uint32_t size);
-		static std::shared_ptr<VertexBuffer> Create(void* vertices, uint32_t size);
+		static std::shared_ptr<VertexBuffer> Create(u32 size);
+		static std::shared_ptr<VertexBuffer> Create(void* vertices, u32 size);
 	};
 
-	class IndexBuffer
+	class OGN_API IndexBuffer
 	{
 	public:
 		virtual ~IndexBuffer() {};
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
-		virtual uint32_t GetCount() const = 0;
-		virtual uint32_t GetBufferID() const = 0;
+		virtual u32 GetCount() const = 0;
+		virtual u32 GetBufferID() const = 0;
 
-		static std::shared_ptr<IndexBuffer> Create(uint32_t size);
-		static std::shared_ptr<IndexBuffer> Create(void* indices, uint32_t count);
+		static std::shared_ptr<IndexBuffer> Create(u32 size);
+		static std::shared_ptr<IndexBuffer> Create(void* indices, u32 count);
 	};
 }
 

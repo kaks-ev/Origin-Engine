@@ -43,7 +43,7 @@ namespace origin
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		OGN_PROFILER_RENDERING();
 
@@ -89,8 +89,8 @@ namespace origin
 			case ShaderDataType::Mat3:
 			case ShaderDataType::Mat4:
 			{
-				const uint8_t count = element.GetComponentCount();
-				for (uint8_t i = 0; i < count; ++i)
+				const u8 count = element.GetComponentCount();
+				for (u8 i = 0; i < count; ++i)
 				{
 					glEnableVertexAttribArray(m_VertexBufferIndex);
 					glVertexAttribPointer(m_VertexBufferIndex,
@@ -112,7 +112,7 @@ namespace origin
 		m_VertexBuffer.push_back(vertexBuffer);
 	}
 	
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer> &indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer> &indexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

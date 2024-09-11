@@ -9,7 +9,7 @@
 namespace origin {
 	
 	template<typename T>
-	class AnimationState
+	class OGN_API AnimationState
 	{
 	public:
 		AnimationState() = default;

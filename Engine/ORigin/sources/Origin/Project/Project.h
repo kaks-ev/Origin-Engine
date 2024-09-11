@@ -12,7 +12,7 @@
 
 namespace origin
 {
-	struct ProjectConfig
+	struct OGN_API ProjectConfig
 	{
 		std::string Name = "Untitled";
 		AssetHandle StartScene = 0;
@@ -21,8 +21,8 @@ namespace origin
 		std::filesystem::path ScriptModulePath;
 	};
 
-	class Scene;
-	class Project
+	class OGN_API Scene;
+	class OGN_API Project
 	{
 	public:
 		const std::filesystem::path& GetProjectDirectory() { return m_ProjectDirectory; }

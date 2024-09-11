@@ -10,14 +10,14 @@
 
 namespace origin
 {
-	struct SpriteSheetData
+	struct OGN_API SpriteSheetData
 	{
 		glm::vec2 Min = glm::vec2(0.0f);
 		glm::vec2 Max = glm::vec2(1.0f);
 		AssetHandle TextureHandle = UUID(0);
 	};
 
-	class SpriteSheet : public Asset
+	class OGN_API SpriteSheet : public Asset
 	{
 	public:
 		SpriteSheet() = default;

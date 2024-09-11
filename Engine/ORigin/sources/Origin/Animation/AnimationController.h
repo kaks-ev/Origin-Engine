@@ -11,7 +11,7 @@
 namespace origin {
 
 	template<typename T>
-	class AnimationController
+	class OGN_API AnimationController
 	{
 	private:
 		float m_Speed;

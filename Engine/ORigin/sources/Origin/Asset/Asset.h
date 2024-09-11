@@ -9,7 +9,7 @@
 namespace origin {
     
     using AssetHandle = UUID;
-    enum class AssetType : u16
+    enum class OGN_API AssetType : u16
     {
         None = 0,
         Scene,
@@ -26,7 +26,7 @@ namespace origin {
     const char *AssetTypeToString(AssetType type);
     AssetType AssetTypeFromString(const std::string_view &assetType);
 
-    class Asset
+    class OGN_API Asset
     {
     public:
         virtual ~Asset() = default;

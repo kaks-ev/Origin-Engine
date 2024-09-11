@@ -7,7 +7,7 @@
 
 namespace origin {
 
-	class KeyEvent : public Event
+	class OGN_API KeyEvent : public Event
 	{
 	public:
 		KeyCode GetKeyCode() const { return m_KeyCode; }
@@ -15,15 +15,19 @@ namespace origin {
 
 	protected:
 		KeyEvent(const KeyCode keycode)
-			: m_KeyCode(keycode) {}
+			: m_KeyCode(keycode)
+		{
+		}
 		KeyCode m_KeyCode;
 	};
 
-	class KeyPressedEvent : public KeyEvent
+	class OGN_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(const KeyCode keycode, const uint16_t repeatCount)
-			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+			: KeyEvent(keycode), m_RepeatCount(repeatCount)
+		{
+		}
 
 		uint16_t GetRepeatCount() const { return m_RepeatCount; }
 
@@ -39,11 +43,13 @@ namespace origin {
 		uint16_t m_RepeatCount;
 	};
 
-	class KeyReleasedEvent : public KeyEvent
+	class OGN_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const KeyCode keycode)
-			: KeyEvent(keycode) {}
+			: KeyEvent(keycode)
+		{
+		}
 
 		std::string ToString() const override
 		{
@@ -55,7 +61,7 @@ namespace origin {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class KeyTypedEvent : public KeyEvent
+	class OGN_API KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(const KeyCode keycode)

@@ -18,11 +18,11 @@
 
 namespace origin
 {
-    struct BoneInfo;
-    class MeshData;
+    struct OGN_API BoneInfo;
+    class OGN_API MeshData;
 
     template<typename T>
-    struct KeyFrame
+    struct OGN_API KeyFrame
     {
         T Value;
         float Timestamp;
@@ -31,7 +31,7 @@ namespace origin
     using Vec3KeyFrames = std::vector<KeyFrame<glm::vec3>>;
     using QuatKeyFrames = std::vector<KeyFrame<glm::quat>>;
 
-    class Bone
+    class OGN_API Bone
     {
     public:
         Vec3KeyFrames PositionKeyFrames;
@@ -154,7 +154,7 @@ namespace origin
         }
     };
 
-    struct AssimpNodeData
+    struct OGN_API AssimpNodeData
     {
         glm::mat4 Transformation;
         std::string Name;
@@ -162,7 +162,7 @@ namespace origin
         std::vector<AssimpNodeData> Children;
     };
 
-    class ModelAnimation : public Animation
+    class OGN_API ModelAnimation : public Animation
     {
     public:
         ModelAnimation() = default;

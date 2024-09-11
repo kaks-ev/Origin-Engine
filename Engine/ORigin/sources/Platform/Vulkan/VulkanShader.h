@@ -11,7 +11,7 @@
 
 namespace origin
 {
-    class VulkanShader final : public Shader
+    class OGN_API VulkanShader final : public Shader
     {
     public:
         VulkanShader(const std::filesystem::path &filepath, bool recompile);

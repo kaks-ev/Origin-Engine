@@ -10,7 +10,7 @@
 
 namespace origin
 {
-	class Skybox
+	class OGN_API Skybox
 	{
 	public:
 		virtual void Draw(const glm::mat4& viewProjection) = 0;

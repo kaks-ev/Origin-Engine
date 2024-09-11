@@ -7,7 +7,7 @@
 
 namespace origin
 {
-	class ShaderLibrary
+	class OGN_API ShaderLibrary
 	{
 	public:
 		ShaderLibrary() = default;

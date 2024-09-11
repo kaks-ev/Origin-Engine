@@ -8,7 +8,7 @@
 
 namespace origin
 {
-    class Win32Window : public Window
+    class OGN_API Win32Window : public Window
     {
     public:
         Win32Window(const char* title, uint32_t width, uint32_t height, bool maximized);

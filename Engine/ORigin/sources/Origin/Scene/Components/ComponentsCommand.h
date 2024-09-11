@@ -10,7 +10,7 @@
 namespace origin
 {
     template<typename T>
-    class ComponentsCommand : public Command
+    class OGN_API ComponentsCommand : public Command
     {
     public:
         ComponentsCommand(T &comp, const T &oldComp)

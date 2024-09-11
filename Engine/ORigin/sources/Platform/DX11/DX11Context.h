@@ -10,7 +10,7 @@
 
 namespace origin
 {
-	class DX11Context : public GraphicsContext
+	class OGN_API DX11Context : public GraphicsContext
 	{ 
 	public:
 		DX11Context();

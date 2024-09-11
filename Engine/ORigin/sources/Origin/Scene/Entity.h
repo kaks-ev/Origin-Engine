@@ -11,7 +11,7 @@
 
 namespace origin {
 
-	class Entity
+	class OGN_API Entity
 	{
 	public:
 		Entity();

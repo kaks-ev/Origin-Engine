@@ -14,9 +14,9 @@
 
 namespace origin {
 
-    class GraphicsContext;
+    class OGN_API GraphicsContext;
 
-    struct WindowData
+    struct OGN_API WindowData
     {
         std::string Title;
         uint32_t Width;
@@ -29,7 +29,7 @@ namespace origin {
         std::function<void(Event &)> EventCallback;
     };
     
-    class Window
+    class OGN_API Window
     {
     public:
         static void GLFWInit();

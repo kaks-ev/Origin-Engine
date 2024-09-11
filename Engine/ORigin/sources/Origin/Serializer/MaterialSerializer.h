@@ -8,7 +8,7 @@
 
 namespace origin
 {
-	class MaterialSerializer
+	class OGN_API MaterialSerializer
 	{
 	public:
 		static bool Serialize(const std::filesystem::path &filepath, const std::shared_ptr<Material> &mat);

@@ -17,7 +17,7 @@ namespace origin
 	{
 		OGN_PROFILER_RENDERING();
 
-		float vertices[] = {
+		f32 vertices[] = {
 
 			 1.0f,  1.0f,  1.0f,
 			 1.0f,  1.0f, -1.0f,
@@ -57,10 +57,10 @@ namespace origin
 		m_VertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
-		uint32_t* indices = new uint32_t[36];
+		u32* indices = new u32[36];
 
-		uint32_t Offset = 0;
-		for (uint32_t i = 0; i < 36; i += 6)
+		u32 Offset = 0;
+		for (u32 i = 0; i < 36; i += 6)
 		{
 			indices[i + 0] = Offset + 0;
 			indices[i + 1] = Offset + 1;
@@ -117,7 +117,7 @@ namespace origin
 		Draw(camera.GetViewProjection());
 	}
 
-	void OpenGLSkybox::SetBlur(float blur)
+	void OpenGLSkybox::SetBlur(f32 blur)
 	{
 		m_BlurFactor = blur;
 	}
@@ -143,7 +143,7 @@ namespace origin
 		GLenum dataFormat = 0, internalFormat = 0;
 
 		// set the file path
-		for (uint32_t i = 0; i < path.size(); i++)
+		for (u32 i = 0; i < path.size(); i++)
 		{
 			data = stbi_load(path[i].c_str(), &height, &width, &bpp, 0);
 			switch (bpp)

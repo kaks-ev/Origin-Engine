@@ -18,7 +18,7 @@
 
 namespace origin {
 
-    struct ApplicationCommandLineArgs
+    struct OGN_API ApplicationCommandLineArgs
     {
         int Count = 0;
         char** Args = nullptr;
@@ -29,7 +29,7 @@ namespace origin {
         }
     };
 
-    struct ApplicationSpecification
+    struct OGN_API ApplicationSpecification
     {
         ApplicationCommandLineArgs CommandLineArgs;
         std::string Name = "ORigin Application";
@@ -40,7 +40,7 @@ namespace origin {
         bool Maximize = false;
     };
 
-    class Application
+    class OGN_API Application
     {
     public:
         Application(ApplicationSpecification& spec);

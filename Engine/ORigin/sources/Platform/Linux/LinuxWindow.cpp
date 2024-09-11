@@ -13,7 +13,7 @@
 
 namespace origin {
 
-    LinuxWindow::LinuxWindow(const char* title, uint32_t width, uint32_t height, bool maximized)
+    LinuxWindow::LinuxWindow(const char* title, u32 width, u32 height, bool maximized)
     {
         OGN_PROFILER_FUNCTION();
 

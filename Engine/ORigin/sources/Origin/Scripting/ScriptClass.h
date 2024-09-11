@@ -14,7 +14,7 @@ extern "C" {
 
 namespace origin
 {
-    class ScriptClass
+    class OGN_API ScriptClass
     {
     public:
         ScriptClass() = default;

@@ -10,7 +10,7 @@ namespace origin
     {
     }
 
-    void VulkanRendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
+    void VulkanRendererAPI::SetViewport(u32 x, u32 y, u32 width, u32 height)
     {
     }
 
@@ -23,27 +23,32 @@ namespace origin
         vk_context->m_ClearValue.color.float32[3] = color.a;
     }
 
-    void VulkanRendererAPI::ClearColor(float r, float g, float b, float a)
+    void VulkanRendererAPI::ClearColor(f32 r, f32 g, f32 b, f32 a)
     {
+        VulkanContext *vk_context = VulkanContext::GetInstance();
+        vk_context->m_ClearValue.color.float32[0] = r * a;
+        vk_context->m_ClearValue.color.float32[1] = g * a;
+        vk_context->m_ClearValue.color.float32[2] = b * a;
+        vk_context->m_ClearValue.color.float32[3] = a;
     }
 
     void VulkanRendererAPI::Clear()
     {
     }
 
-    void VulkanRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray, uint32_t indexCount)
+    void VulkanRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray, u32 indexCount)
     {
     }
 
-    void VulkanRendererAPI::DrawArrays(const std::shared_ptr<VertexArray>& vertexArray, uint32_t vertexCount)
+    void VulkanRendererAPI::DrawArrays(const std::shared_ptr<VertexArray>& vertexArray, u32 vertexCount)
     {
     }
 
-    void VulkanRendererAPI::DrawLines(const std::shared_ptr<VertexArray>& vertexArray, uint32_t vertexCount)
+    void VulkanRendererAPI::DrawLines(const std::shared_ptr<VertexArray>& vertexArray, u32 vertexCount)
     {
     }
 
-    void VulkanRendererAPI::SetLineWidth(float width)
+    void VulkanRendererAPI::SetLineWidth(f32 width)
     {
     }
 }

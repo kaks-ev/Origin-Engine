@@ -9,7 +9,7 @@ extern "C" {
 
 namespace origin
 {
-    enum class ScriptFieldType
+    enum class OGN_API ScriptFieldType
     {
         Invalid = 0,
         Entity,
@@ -19,7 +19,7 @@ namespace origin
         Vector2, Vector3, Vector4
     };
 
-    struct ScriptField
+    struct OGN_API ScriptField
     {
         ScriptFieldType Type = ScriptFieldType::Invalid;
         std::string Name;

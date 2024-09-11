@@ -21,7 +21,8 @@ namespace origin
             abort();
         }
     }
-    struct Swapchain
+
+    struct OGN_API Swapchain
     {
         VkSwapchainKHR Handle;
         std::vector<VkImage> Images;
@@ -31,7 +32,7 @@ namespace origin
         VkExtent2D Extent;
     };
 
-    class VulkanContext final : public GraphicsContext
+    class OGN_API VulkanContext final : public GraphicsContext
     {
     public:
         VulkanContext();

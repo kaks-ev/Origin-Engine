@@ -8,7 +8,7 @@
 
 namespace origin
 {
-	class UniformBuffer
+	class OGN_API UniformBuffer
 	{
 	public:
         virtual ~UniformBuffer() {}
