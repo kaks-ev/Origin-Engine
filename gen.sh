@@ -2,6 +2,18 @@
 
 # change ownership of the home directory
 # to the current user
+
+CACHE_FILE="setup_cache"
+
+if [[ -f "$CACHE_FILE" ]]; then
+    echo "Setup already completed. Running the Python setup scrupt directly."
+    # Run the Python setup script
+    pushd ./Scripts
+    sudo python3 Setup.py
+    popd
+    exit 0
+fi
+
 sudo chown -R $USER: $HOME
 
 # detect ubuntu version
@@ -20,7 +32,6 @@ sudo apt update
 sudo apt install build-essential mono-complete mono-devel mono-dbg libicu-dev -y
 sudo snap install dotnet-sdk --classic
 
-
 if [[ "$VERSION" == "24.04" ]]; then
     echo "Installing Vulkan SDK for Ubuntu 24.04 (Noble)"
     wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
@@ -38,6 +49,9 @@ fi
 sudo apt update
 sudo apt install vulkan-sdk -y
 sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils -y
+
+# Mart setup as complete by creating a cache file
+echo "Setup completed on $(date)" > "$CACHE_FILE"
 
 # run the python setup script
 pushd ./Scripts
