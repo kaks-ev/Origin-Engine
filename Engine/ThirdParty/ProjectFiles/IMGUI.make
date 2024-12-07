@@ -20,7 +20,7 @@ endif
 
 RESCOMP = windres
 DEFINES +=
-INCLUDES += -I../IMGUI -I../GLFW/include -I../Vulkan/Include
+INCLUDES += -I../IMGUI -I../GLFW/include -I../../../Scripts/dependencies/Include
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)

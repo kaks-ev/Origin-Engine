@@ -31,7 +31,7 @@ objdir (ThirdPartyIntOutputdir)
 		"%{PhysXDir}/physx/source/foundation/include",
 	}
 	files { 
-		"%{PhysXDir}/physx/source/physxcooking/src/**.cpp",
+		"%{PhysXDir}/physx/source/physxcooking/src/Cooking.cpp",
 	} 
 	
 	defines {
@@ -54,10 +54,12 @@ objdir (ThirdPartyIntOutputdir)
 	filter "system:linux"
 		pic "On"
 		systemversion "latest"
-		removefiles { "%{PhysXDir}/physx/source/physxcooking/src/windows/**.cpp" }
 		
 	filter "system:windows"
 		systemversion "latest"
+		files {
+			"%{PhysXDir}/physx/source/physxcooking/src/windows/WindowsCookingDelayHook.cpp",
+		}
 
 
 	filter "configurations:Debug"
